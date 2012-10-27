@@ -1,0 +1,97 @@
+/**
+ * flow
+ **/
+
+.flowouttoleft(@v:null) {
+	0% {
+		.transform(@v,translateX(0) scale(1));
+	}
+	45%, 55% {
+		.transform(@v,translateX(0) scale(.7));
+	}
+	100% {
+		.transform(@v,translateX(-100%) scale(.7));
+	}
+}
+.flowouttoright(@v:null) {
+	0% {
+		.transform(@v,translateX(0) scale(1));
+	}
+	45%, 55% {
+		.transform(@v,translateX(0) scale(.7));
+	}
+	100% {
+		.transform(@v,translateX(100%) scale(.7));
+	}
+}
+.flowinfromleft(@v:null) {
+	0% {
+		.transform(@v,translateX(-100%) scale(.7));
+	}
+	45%, 55% {
+		.transform(@v,translateX(0) scale(.7));
+	}
+	100% {
+		.transform(@v,translateX(0) scale(1));
+	}
+}
+.flowinfromright(@v:null) {
+	0% {
+		.transform(@v,translateX(100%) scale(.7));
+	}
+	45%, 55% {
+		.transform(@v,translateX(0) scale(.7));
+	}
+	100% {
+		.transform(@v,translateX(0) scale(1));
+	}
+}
+
+.flowleft,.flowright {
+	.transform-origin(50% 30%);
+	.box-shadow(0 0 20px rgba(0,0,0,.4));
+	.animation-duration(350ms);
+}
+.flowleft.out,.flowright.out.reverse {
+	.transform(translateX(-100%) scale(.7));
+	.animation-name(flowouttoleft);
+	.animation-timing-function(ease);
+	
+}
+.flowleft.in,.flowright.in.reverse {
+	.transform(translateX(0) scale(1));
+	.animation-name(flowinfromright);
+	.animation-timing-function(ease);
+}
+.flowleft.out.reverse,.flowright.out {
+	.transform(translateX(100%));
+	.animation-name(flowouttoright);
+}
+.flowleft.in.reverse,.flowright.in {
+	.animation-name(flowinfromleft);
+}
+
+
+@-webkit-keyframes flowouttoleft {.flowouttoleft(webkit)}
+@-moz-keyframes flowouttoleft {.flowouttoleft(moz)}
+@-ms-keyframes flowouttoleft {.flowouttoleft(ms)}
+@-o-keyframes flowouttoleft {.flowouttoleft(o)}
+@keyframes flowouttoleft {.flowouttoleft()}
+
+@-webkit-keyframes flowouttoright {.flowouttoright(webkit)}
+@-moz-keyframes flowouttoright {.flowouttoright(moz)}
+@-ms-keyframes flowouttoright {.flowouttoright(ms)}
+@-o-keyframes flowouttoright {.flowouttoright(o)}
+@keyframes flowouttoright {.flowouttoright()}
+
+@-webkit-keyframes flowinfromleft {.flowinfromleft(webkit)}
+@-moz-keyframes flowinfromleft {.flowinfromleft(moz)}
+@-ms-keyframes flowinfromleft {.flowinfromleft(ms)}
+@-o-keyframes flowinfromleft {.flowinfromleft(o)}
+@keyframes flowinfromleft {.flowinfromleft()}
+
+@-webkit-keyframes flowinfromright {.flowinfromright(webkit)}
+@-moz-keyframes flowinfromright {.flowinfromright(moz)}
+@-ms-keyframes flowinfromright {.flowinfromright(ms)}
+@-o-keyframes flowinfromright {.flowinfromright(o)}
+@keyframes flowinfromright {.flowinfromright()}

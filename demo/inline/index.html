@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jqMini JS</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../../jqMini.css" />
+<style>
+	body {
+		background: #ccc;
+	}
+	.page {
+		background: #eee;
+		padding: 2% 2% 2%;
+	}
+	#global-navi {
+		width: 100%;
+		height: 45px;
+		background: #333;
+		z-index:5;
+	}
+	body {
+		height: auto;
+	}
+	#content {
+		height: 200px;
+		position: relative;
+	}
+	#global-navi ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	#global-navi ul li {
+		float: left;
+	}
+	#global-navi ul li a{
+		display: block;
+		padding: 10px;
+		margin-right: 10px;
+		color: #eee;
+	}
+</style>
+</head>
+<body>
+	<div id="global-navi">
+		<ul>
+			<li><a href="#page1">Page1</a></li>
+			<li><a href="#page2">Page2</a></li>
+			<li><a href="#page3">Page3</a></li>
+			<li><a href="#page4">Page4</a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<div id="jqmini" class="jqMini">
+			<div id="menu" class="page">
+				<h1>TopPage</h1>
+			</div>
+			<div id="page1" class="page">
+				<h1>Page1</h1>
+				<p><a href="#menu" data-reverse="true">Topへ戻る</a></p>
+			</div>
+			<div id="page2" class="page">
+				<h1>Page2</h1>
+				<p><a href="#menu" data-reverse="true">Topへ戻る</a></p>
+			</div>
+			<div id="page3" class="page">
+				<h1>Page3</h1>
+				<p><a href="#menu" data-reverse="true">Topへ戻る</a></p>
+			</div>
+			<div id="page4" class="page">
+				<h1>Page4</h1>
+				<p><a href="#menu" data-reverse="true">Topへ戻る</a></p>
+			</div>
+		</div>
+	</div>
+	<div>
+		<p>ここはjqMiniの範囲外なのでずっと表示されています</p>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="../../jqMini.js"></script>
+<script>
+	var jqmini = $("#jqmini").jqMini({
+		scrollCheck: false,
+		hash: false
+	});
+	
+	$("#global-navi ul li a").click(function(e) {
+		var href = $(this).attr("href");
+		jqmini.goTo(href,{
+			transition: "slideleft"
+		});
+		e.preventDefault();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/**
+ * fadein/fadeout
+ **/
+
+.fadein(@v:null) {
+	from { .opacity(@v,0); }
+	to { .opacity(@v,1); }
+}
+.fadeout(@v:null) {
+	from { .opacity(@v,1); }
+	to { .opacity(@v,0); }
+}
+
+.fade.out {
+	.opacity(0);
+	.animation-duration(125ms);
+	.animation-name(fadeout);
+}
+.fade.in {
+	.opacity(1);
+	.animation-duration(225ms);
+	.animation-name(fadein);
+}
+
+@-webkit-keyframes fadein {.fadein(webkit)}
+@-moz-keyframes fadein {.fadein(moz)}
+@-ms-keyframes fadein {.fadein(ms)}
+@-o-keyframes fadein {.fadein(o)}
+@keyframes fadein {.fadein()}
+
+@-webkit-keyframes fadeout {.fadeout(webkit)}
+@-moz-keyframes fadeout {.fadeout(moz)}
+@-ms-keyframes fadeout {.fadeout(ms)}
+@-o-keyframes fadeout {.fadeout(o)}
+@keyframes fadeout {.fadeout()}

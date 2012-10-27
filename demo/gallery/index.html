@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jqMini JS</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../../jqMini.css" />
+<style>
+	body {
+		background: #ccc;
+	}
+	.page {
+		background: #eee;
+		padding: 2%;
+	}
+	#app-title {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%,-50%);
+		-moz-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+		text-align: center;
+	}
+	#app-title small {
+		font-size: 10px;
+	}
+	.thumb {
+		width: 33.33333333333333%;
+		float: left;
+		text-align: center;
+	}
+	.thumb img {
+		border: 3px solid #eee;
+		width: 100%;
+		max-width: 100%;
+	}
+	.photo {
+		width: 100%;
+		max-width: 100%;
+	}
+</style>
+</head>
+<body>
+	<div id="jqmini" class="jqMini">
+		<div id="main" class="current page">
+			<div id="app-title">
+				<h1>jQuery Mobile Mini</h1>
+				<div>
+					Sample Gallery<br>
+					<small>Porwerd By jqMini.js</small>
+				</div>
+				<p><img src="ajax-loader.gif" alt="Now Loading..."></p>
+			</div>
+		</div>
+		<div id="menu" class="page">
+			<div class="thumb">
+				<a href="#photo01"><img src="images/thumb/01.jpg" alt=""></a>
+			</div>
+			<div class="thumb">
+				<a href="#photo02"><img src="images/thumb/02.jpg" alt=""></a>
+			</div>
+			<div class="thumb">
+				<a href="#photo03"><img src="images/thumb/03.jpg" alt=""></a>
+			</div>
+			<div class="thumb">
+				<a href="#photo04"><img src="images/thumb/04.jpg" alt=""></a>
+			</div>
+			<div class="thumb">
+				<a href="#photo05"><img src="images/thumb/05.jpg" alt=""></a>
+			</div>
+			<div class="thumb">
+				<a href="#photo06"><img src="images/thumb/06.jpg" alt=""></a>
+			</div>
+		</div>
+		<div id="photo01" class="page">
+			<a href="#menu" data-reverse="true"><img src="images/01.jpg" alt="" class="photo"></a>
+		</div>
+		<div id="photo02" class="page">
+			<a href="#menu" data-reverse="true"><img src="images/02.jpg" alt="" class="photo"></a>
+		</div>
+		<div id="photo03" class="page">
+			<a href="#menu" data-reverse="true"><img src="images/03.jpg" alt="" class="photo"></a>
+		</div>
+		<div id="photo04" class="page">
+			<a href="#menu" data-reverse="true"><img src="images/04.jpg" alt="" class="photo"></a>
+		</div>
+		<div id="photo05" class="page">
+			<a href="#menu" data-reverse="true"><img src="images/05.jpg" alt="" class="photo"></a>
+		</div>
+		<div id="photo06" class="page">
+			<a href="#menu" data-reverse="true"><img src="images/06.jpg" alt="" class="photo"></a>
+		</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="../../jqMini.js"></script>
+<script>
+	var jqmini = $("#jqmini").jqMini({
+		transition: "popup",
+		scrollCheck: false,
+		hash: false
+	});
+	
+	$(window).ready(function() {
+		window.console.log(jqmini);
+		window.setTimeout(function() {
+			jqmini.goTo("#menu",{
+				transition: "flipleft"
+			});
+		},0);
+		
+	});
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+.box-sizing(@box: content-box) {
+	-moz-box-sizing: @box;
+	-webkit-box-sizing: @box;
+	-ms-box-sizing: @box;
+	-o-box-sizing: @box;
+	box-sizing: @box;
+}
+.animation-timing-function(@easing: ease-out) {
+	-webkit-animation-timing-function: @easing;
+	-moz-animation-timing-function: @easing;
+	-ms-animation-timing-function: @easing;
+	-o-animation-timing-function: @easing;
+	animation-timing-function: @easing;
+}
+.animation-duration(@duration: 350ms) {
+	-webkit-animation-duration: @duration;
+	-moz-animation-duration: @duration;
+	-ms-animation-duration: @duration;
+	-o-animation-duration: @duration;
+	animation-duration: @duration;
+}
+.animation-name(@name) {
+	-webkit-animation-name: @name;
+	-moz-animation-name: @name;
+	-ms-animation-name: @name;
+	-o-animation-name: @name;
+	animation-name: @name;
+}
+.opacity(@opacity: 0.5) {
+	-moz-opacity: @opacity;
+	-webkit-opacity: @opacity;
+	-o-opacity: @opacity;
+	-ms-filter: e(%("alpha(opacity=%d)", @opacity * 100));
+	filter: e(%("alpha(opacity=%d)", @opacity * 100));
+	opacity: @opacity;
+}
+.opacity(@vendor,@val) when (@vendor = webkit) {
+	-webkit-opacity: @val;
+}
+.opacity(@vendor,@val) when (@vendor = ms) {
+	-ms-filter: e(%("alpha(opacity=%d)", @val * 100));
+	filter: e(%("alpha(opacity=%d)", @val * 100));
+}
+.opacity(@vendor,@val) when (@vendor = moz) {
+	-moz-opacity: @val;
+}
+.opacity(@vendor,@val) when (@vendor = o) {
+	-o-opacity: @val;
+}
+.opacity(@vendor,@val) {
+	opacity: @val;
+}
+
+
+.transform-origin(@arguments) {
+	-webkit-transform-origin: @arguments;
+	-moz-transform-origin: @arguments;
+	-ms-transform-origin: @arguments;
+	-o-transform-origin: @arguments;
+	transform-origin: @arguments;
+}
+.transform(@arguments) {
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-ms-transform: @arguments;
+	-o-transform: @arguments;
+	transform: @arguments;
+}
+
+.transform(@vendor,@val) when (@vendor = webkit) {
+	-webkit-transform: @val;
+}
+.transform(@vendor,@val) when (@vendor = ms) {
+	-ms-transform: @val;
+}
+.transform(@vendor,@val) when (@vendor = moz) {
+	-moz-transform: @val;
+}
+.transform(@vendor,@val) when (@vendor = o) {
+	-o-transform: @val;
+}
+.transform(@vendor,@val) {
+	transform: @val;
+}
+
+.perspective(@arguments) {
+	-webkit-perspective: @arguments;
+	-moz-perspective: @arguments;
+	-ms-perspective: @arguments;
+	-o-perspective: @arguments;
+	perspective: @arguments;
+}
+.backface-visibility(@arguments) {
+	-webkit-backface-visibility: @arguments;
+	-moz-backface-visibility: @arguments;
+	-ms-backface-visibility: @arguments;
+	-o-backface-visibility: @arguments;
+	backface-visibility: @arguments;
+}
+.box-shadow(@arguments) {
+	-webkit-box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	-ms-box-shadow: @arguments;
+	-o-box-shadow: @arguments;
+	box-shadow: @arguments;
+}

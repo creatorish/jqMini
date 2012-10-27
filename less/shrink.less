@@ -1,0 +1,55 @@
+/**
+ * shrink
+ **/
+
+.scalein(@v:null) {
+	0% {
+		.transform(@v,scale(0));
+	}
+	100% {
+		.transform(@v,scale(1));
+	}
+}
+.scaleout(@v:null) {
+	0% {
+		.transform(@v,scale(1));
+	}
+	100% {
+		.transform(@v,scale(0));
+	}
+}
+
+.shrink.out, .shrink.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.shrink.out {
+	.transform(scale(0));
+	.animation-name(scaleout);
+}
+.shrink.in {
+	.transform(scale(1));
+	.animation-name(scalein);
+}
+.shrink.out.reverse {
+	.transform(scale(0));
+	.animation-name(scaleout);
+}
+.shrink.in.reverse {
+	.transform(scale(1));
+	.animation-name(scalein);
+}
+
+
+@-webkit-keyframes scalein {.scalein(webkit)}
+@-moz-keyframes scalein {.scalein(moz)}
+@-ms-keyframes scalein {.scalein(ms)}
+@-o-keyframes scalein {.scalein(o)}
+@keyframes scalein {.scalein()}
+
+
+@-webkit-keyframes scaleout {.scaleout(webkit)}
+@-moz-keyframes scaleout {.scaleout(moz)}
+@-ms-keyframes scaleout {.scaleout(ms)}
+@-o-keyframes scaleout {.scaleout(o)}
+@keyframes scaleout {.scaleout()}

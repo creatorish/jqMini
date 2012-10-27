@@ -1,0 +1,88 @@
+/**
+ * shuffle
+ * required: slide.less
+ **/
+
+.shuffleright.out, .shuffleright.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.shuffleright.out {
+	.transform(translateX(-100%));
+	.animation-name(slideouttoright);
+}
+.shuffleright.in {
+	.transform(translateX(0));
+	.animation-name(slideinfromright);
+}
+.shuffleright.out.reverse {
+	.transform(translateX(100%));
+	.animation-name(slideouttoright);
+}
+.shuffleright.in.reverse {
+	.transform(translateX(0));
+	.animation-name(slideinfromright);
+}
+
+.shuffleleft.out, .shuffleleft.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.shuffleleft.out {
+	.transform(translateX(-100%));
+	.animation-name(slideouttoleft);
+}
+.shuffleleft.in {
+	.transform(translateX(0));
+	.animation-name(slideinfromleft);
+}
+.shuffleleft.out.reverse {
+	.transform(translateX(100%));
+	.animation-name(slideouttoleft);
+}
+.shuffleleft.in.reverse {
+	.transform(translateX(0));
+	.animation-name(slideinfromleft);
+}
+
+.shuffleup.out, .shuffleup.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.shuffleup.out {
+	.transform(translateY(-100%));
+	.animation-name(slideouttotop);
+}
+.shuffleup.in {
+	.transform(translateY(0));
+	.animation-name(slideinfromtop);
+}
+.shuffleup.out.reverse {
+	.transform(translateY(100%));
+	.animation-name(slideouttotop);
+}
+.shuffleup.in.reverse {
+	.transform(translateY(0));
+	.animation-name(slideinfromtop);
+}
+
+.shuffledown.out, .shuffledown.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.shuffledown.out {
+	.transform(translateY(-100%));
+	.animation-name(slideouttobottom);
+}
+.shuffledown.in {
+	.transform(translateY(0));
+	.animation-name(slideinfrombottom);
+}
+.shuffledown.out.reverse {
+	.transform(translateY(100%));
+	.animation-name(slideouttobottom);
+}
+.shuffledown.in.reverse {
+	.transform(translateY(0));
+	.animation-name(slideinfrombottom);
+}

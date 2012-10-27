@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jqMini JS</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../jqMini.css" />
+<style>
+	body {
+		background: #ccc;
+	}
+	.page {
+		background: #eee;
+		padding: 2%;
+	}
+	ol {
+		padding: 0;
+		color: #666;
+		list-style: none;
+		border-top: 1px solid #ccc;
+		-webkit-box-shadow: 0 1px 0 #fff inset;
+		-moz-box-shadow: 0 1px 0 #fff inset;
+		-ms-box-shadow: 0 1px 0 #fff inset;
+		box-shadow: 0 1px 0 #fff inset;
+	}
+	ol li {
+		border-bottom: 1px solid #ccc;
+		-webkit-box-shadow: 0 1px 0 #fff;
+		-moz-box-shadow: 0 1px 0 #fff;
+		-ms-box-shadow: 0 1px 0 #fff;
+		box-shadow: 0 1px 0 #fff;
+	}
+	ol li a {
+		display: block;
+		padding: 20px 10px;
+		text-decoration: none;
+	}
+	pre {
+		background: #fff;
+		padding: 5px;
+		border: 1px solid #ccc;
+	}
+</style>
+</head>
+<body>
+	<div id="jqmini" class="jqMini">
+		<div id="main" class="page current">
+			<h1>jQuery Mobile Mini</h1>
+			<ol>
+				<li><a href="#transition" data-transition="slideleft">アニメーション</a></li>
+				<li><a href="#event" data-transition="slideleft">イベント</a></li>
+				<li><a href="#ajax" data-transition="slideleft">Ajaxサンプル</a></li>
+				<li><a href="app/index.html" target="_blank" rel="external">App風サンプル</a></li>
+				<li><a href="gallery/index.html" target="_blank" rel="external">フォトギャラリーサンプル</a></li>
+				<li><a href="book/index.html" target="_blank" rel="external">電子書籍風サンプル</a></li>
+				<li><a href="inline/index.html" target="_blank" rel="external">インラインサンプル</a></li>
+			</ul>
+		</div>
+		<div id="transition" class="page">
+			<h1>Transition</h1>
+			<div class="back"><a href="#main" data-transition="slideleft" data-reverse="true">Back</a></div>
+			<ol>
+				<li><a href="#fade" data-transition="fade">fade</a></li>
+				
+				<li><a href="#popup" data-transition="popup">popup</a></li>
+				<li><a href="#popdown" data-transition="popdown">popdown</a></li>
+				
+				<li><a href="#flipleft" data-transition="flipleft">flipleft</a></li>
+				<li><a href="#flipright" data-transition="flipright">flipright</a></li>
+				<li><a href="#flipup" data-transition="flipup">flipup</a></li>
+				<li><a href="#flipdown" data-transition="flipdown">flipdown</a></li>
+				
+				<li><a href="#turnleft" data-transition="turnleft">turnleft</a></li>
+				<li><a href="#turnright" data-transition="turnright">turnright</a></li>
+				
+				<li><a href="#flowleft" data-transition="flowleft">flowleft</a></li>
+				<li><a href="#flowright" data-transition="flowright">flowright</a></li>
+				
+				<li><a href="#slideleft" data-transition="slideleft">slideleft</a></li>
+				<li><a href="#slideright" data-transition="slideright">slideright</a></li>
+				<li><a href="#slideup" data-transition="slideup">slideup</a></li>
+				<li><a href="#slidedown" data-transition="slidedown">slidedown</a></li>
+				
+				<li><a href="#slidefadeleft" data-transition="slidefadeleft">slidefadeleft</a></li>
+				<li><a href="#slidefaderight" data-transition="slidefaderight">slidefaderight</a></li>
+				<li><a href="#slidefadeup" data-transition="slidefadeup">slidefadeup</a></li>
+				<li><a href="#slidefadedown" data-transition="slidefadedown">slidefadedown</a></li>
+				
+				<li><a href="#none" data-transition="none">none</a></li>
+				<li><a href="#coverleft" data-transition="coverleft">coverleft</a></li>
+				<li><a href="#coverright" data-transition="coverright">coverright</a></li>
+				<li><a href="#coverup" data-transition="coverup">coverup</a></li>
+				<li><a href="#coverdown" data-transition="coverdown">coverdown</a></li>
+				
+				<li><a href="#shuffleleft" data-transition="shuffleleft">shuffleleft</a></li>
+				<li><a href="#shuffleright" data-transition="shuffleright">shuffleright</a></li>
+				<li><a href="#shuffleup" data-transition="shuffleup">shuffleup</a></li>
+				<li><a href="#shuffledown" data-transition="shuffledown">shuffledown</a></li>
+				
+				<li><a href="#shrink" data-transition="shrink">shrink</a></li>
+				
+				<li><a href="#rollleft" data-transition="rollleft">rollleft</a></li>
+				<li><a href="#rollright" data-transition="rollright">rollright</a></li>
+			</ol>
+			<div class="back"><a href="#main" data-transition="slideleft" data-reverse="true">Back</a></div>
+		</div>
+		<div id="fade" class="page">
+			<a href="#transition" data-transition="fade" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="popup" class="page">
+			<a href="#transition" data-transition="popup" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="popdown" class="page">
+			<a href="#transition" data-transition="popdown" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="flipleft" class="page">
+			<a href="#transition" data-transition="flipleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="flipright" class="page">
+			<a href="#transition" data-transition="flipright" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="turnleft" class="page">
+			<a href="#transition" data-transition="turnleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="turnright" class="page">
+			<a href="#transition" data-transition="turnright" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="flowleft" class="page">
+			<a href="#transition" data-transition="flowleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="flowright" class="page">
+			<a href="#transition" data-transition="flowright" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="slideleft" class="page">
+			<a href="#transition" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="slideright" class="page">
+			<a href="#transition" data-transition="slideright" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="slideup" class="page">
+			<a href="#transition" data-transition="slideup" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="slidedown" class="page">
+			<a href="#transition" data-transition="slidedown" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="slidefadeleft" class="page">
+			<a href="#transition" data-transition="slidefadeleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="slidefaderight" class="page">
+			<a href="#transition" data-transition="slidefaderight" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="slidefadeup" class="page">
+			<a href="#transition" data-transition="slidefadeup" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="slidefadedown" class="page">
+			<a href="#transition" data-transition="slidefadedown" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="none" class="page">
+			<a href="#transition" data-transition="none" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="coverleft" class="page">
+			<a href="#transition" data-transition="coverleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="coverright" class="page">
+			<a href="#transition" data-transition="coverright" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="coverup" class="page">
+			<a href="#transition" data-transition="coverup" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="coverdown" class="page">
+			<a href="#transition" data-transition="coverdown" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="shuffleleft" class="page">
+			<a href="#transition" data-transition="shuffleleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="shuffleright" class="page">
+			<a href="#transition" data-transition="shuffleright" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="shuffleup" class="page">
+			<a href="#transition" data-transition="shuffleup" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="shuffledown" class="page">
+			<a href="#transition" data-transition="shuffledown" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="shrink" class="page">
+			<a href="#transition" data-transition="shrink" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="rollleft" class="page">
+			<a href="#transition" data-transition="rollleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="rollright" class="page">
+			<a href="#transition" data-transition="rollright" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="flipup" class="page">
+			<a href="#transition" data-transition="flipup" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="flipdown" class="page">
+			<a href="#transition" data-transition="flipdown" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="event" class="page">
+			<div class="back"><a href="#main" data-transition="slideleft" data-reverse="true">Back</a></div>
+			<ol>
+				<li><a href="#changestart" data-transition="slideleft">Change Start</a></li>
+				<li><a href="#changeend" data-transition="slideleft">Change End</a></li>
+				<li><a href="#show" data-transition="slideleft">Show</a></li>
+				<li><a href="#hide" data-transition="slideleft">Hide</a></li>
+				<li><a href="#preshow" data-transition="slideleft">PreShow</a></li>
+				<li><a href="#prehide" data-transition="slideleft">PreHide</a></li>
+				<li><a href="#cancel" data-transition="slideleft">Cancel</a></li>
+				<li><a href="#tips" data-transition="slideleft">TIPS</a></li>
+			</ol>
+			<div class="back"><a href="#main" data-transition="slideleft" data-reverse="true">Back</a></div>
+		</div>
+		<div id="changestart" class="page">
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+			<div><pre><code>$("#jqmini").bind(jqMiniEvent.changeStart,function(from,to) {
+	//
+});</code></pre></div>
+			<p>from - 遷移前の要素（jQueryオブジェクト）<br>
+			to - 遷移後の要素（jQueryオブジェクト）</p>
+			<p>画面遷移が開始する直前に発生します。</p>
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="changeend" class="page">
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+			<div><pre><code>$("#jqmini").bind(jqMiniEvent.changeEnd,function(from,to) {
+	//
+});</code></pre></div>
+			<p>from - 遷移前の要素（jQueryオブジェクト）<br>
+			to - 遷移後の要素（jQueryオブジェクト）</p>
+			<p>画面遷移が完了したときに発生します。</p>
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="show" class="page">
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+			<div><pre><code>$("#show").bind(jqMiniEvent.show,function(from) {
+	//
+});</code></pre></div>
+			<p>from - 遷移前の要素（jQueryオブジェクト）</p>
+			<p>指定した要素が表示されたときに発生します。Change系のイベントと違い、各シーンの$("#show")や$("#test")などにbindします。</p>
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		<div id="hide" class="page">
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+			<div><pre><code>$("#show").bind(jqMiniEvent.hide,function(from) {
+	//
+});</code></pre></div>
+			<p>to - 遷移後の要素（jQueryオブジェクト）</p>
+			<p>指定した要素が非表示になったときに発生します。Change系のイベントと違い、各シーンの$("#show")や$("#test")などにbindします。</p>
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="preshow" class="page">
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+			<div><pre><code>$("#preshow").bind(jqMiniEvent.preShow,function(from) {
+	//
+});</code></pre></div>
+			<p>from - 遷移前の要素（jQueryオブジェクト）</p>
+			<p>指定した要素が表示される前に発生します。アニメーション前に発生します。</p>
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="prehide" class="page">
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+			<div><pre><code>$("#show").bind(jqMiniEvent.preHide,function(to) {
+	//
+});</code></pre></div>
+			<p>to - 遷移後の要素（jQueryオブジェクト）</p>
+			<p>指定した要素が非表示に前に発生します。アニメーション前に発生します。</p>
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="cancel" class="page">
+			<p>return false;することで画面遷移をキャンセルできます。<br />
+			キャンセルできるイベントはchangeStart,preShow,preHideの３つです</p>
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+			<div><pre><code>$("#cancel").bind(jqMiniEvent.preShow,function(to) {
+	//
+	return false;
+});</code></pre></div>
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="tips" class="page">
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+			<p>初めて指定シーンが表示されたときにだけイベントを実行する場合は以下のようにbindの代わりにoneを使います。</p>
+			<div><pre><code>$("#show").one(jqMiniEvent.hide,function(from) {
+	//
+});</code></pre></div>
+			<a href="#event" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+		
+		<div id="ajax" class="page">
+			<a href="#main" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+			<div id="ajax-content">Now Loading...</div>
+			<a href="#main" data-transition="slideleft" data-reverse="true">一覧へ戻る</a>
+		</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="../jqMini.js"></script>
+<script>
+	$("#jqmini").jqMini({
+		transition: "fade",
+		scrollCheck: true,
+		external: "external",
+		hash: true
+	});
+	
+	$("#show").bind(jqMiniEvent.show,function() {
+		alert("Show Event");
+	});
+	$("#hide").bind(jqMiniEvent.hide,function() {
+		alert("Hide Event");
+	});
+	$("#preshow").bind(jqMiniEvent.preShow,function(e) {
+		alert("PreShow Event");
+		return false;
+	});
+	$("#prehide").bind(jqMiniEvent.preHide,function() {
+		alert("PreHide Event");
+	});
+	$("#cancel").one(jqMiniEvent.preShow,function() {
+		alert("画面遷移をキャンセルしました。\nもう一度クリックすると説明が見られます。");
+		return false;
+	});
+	$("#tips").one(jqMiniEvent.show,function() {
+		alert("このアラートは一度だけ表示されます");
+	});
+	
+	$("#ajax").one(jqMiniEvent.show,function() {
+		$("#ajax-content").load("ajax-content.html");
+	});
+</script>
+</body>
+</html>

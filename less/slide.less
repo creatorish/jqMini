@@ -1,0 +1,218 @@
+/**
+ * slide
+ **/
+ 
+.slideinfromright(@v:null) {
+	from {
+		.transform(@v,translateX(100%));
+	}
+	to {
+		.transform(@v,translateX(0));
+	}
+}
+.slideinfromleft(@v:null) {
+	from {
+		.transform(@v,translateX(-100%))
+	}
+	to {
+		.transform(@v,translateX(0))
+	}
+}
+.slideouttoleft(@v:null) {
+	from {
+		.transform(@v,translateX(0))
+	}
+	to {
+		.transform(@v,translateX(-100%))
+	}
+}
+.slideouttoright(@v:null) {
+	from { 
+		.transform(@v,translateX(0));
+	}
+	to { 
+		.transform(@v,translateX(100%));
+	}
+}
+.slideinfromtop(@v:null) {
+	from { 
+		.transform(@v,translateY(-100%));
+	}
+	to { 
+		.transform(@v,translateY(0)); 
+	}
+}
+.slideouttotop(@v:null) {
+	from { 
+		.transform(@v,translateY(0));
+	}
+	to {
+		.transform(@v,translateY(-100%));
+	}
+}
+.slideinfrombottom(@v:null) {
+	from { 
+		.transform(@v,translateY(100%));
+	}
+	to {
+		.transform(@v,translateY(0));
+	}
+}
+.slideouttobottom(@v:null) {
+	from {
+		.transform(@v,translateY(0));
+	}
+	to {
+		.transform(@v,translateY(100%));
+	}
+}
+
+.slideleft.out,.slideleft.in,.slideright.out,.slideright.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.slideleft.out,.slideright.out.reverse {
+	.transform(translateX(-100%));
+	.animation-name(slideouttoleft);
+}
+.slideleft.in,.slideright.in.reverse {
+	.transform(translateX(0));
+	.animation-name(slideinfromright);
+}
+.slideleft.out.reverse,.slideright.out {
+	.transform(translateX(100%));
+	.animation-name(slideouttoright);
+}
+.slideleft.in.reverse,.slideright.in {
+	.transform(translateX(0));
+	.animation-name(slideinfromleft);
+}
+
+.slidefadeleft.out,.slidefaderight.out.reverse {
+	.transform(translateX(-100%));
+	.animation-name(slideouttoleft);
+	.animation-duration(200ms);
+}
+.slidefadeleft.in,.slidefaderight.in.reverse {
+	.transform(translateX(0));
+	.animation-name(fadein);
+	.animation-duration(200ms);
+}
+.slidefadeleft.out.reverse,.slidefaderight.out {
+	.transform(translateX(100%));
+	.animation-name(slideouttoright);
+	.animation-duration(200ms);
+}
+.slidefadeleft.in.reverse,.slidefaderight.in {
+	.transform(translateX(0));
+	.animation-name(fadein);
+	.animation-duration(200ms);
+}
+
+.slidefadeup.out,.slidefadedown.out.reverse {
+	.transform(translateY(-100%));
+	.animation-name(slideouttotop);
+	.animation-duration(225ms);
+}
+.slidefadeup.in,.slidefadedown.in.reverse {
+	.transform(translateY(0));
+	.animation-name(fadein);
+	.animation-duration(200ms);
+}
+.slidefadeup.out.reverse,.slidefadedown.out {
+	.transform(translateY(100%));
+	.animation-name(slideouttobottom);
+	.animation-duration(200ms);
+}
+.slidefadeup.in.reverse,.slidefadedown.in {
+	.transform(translateY(0));
+	.animation-name(fadein);
+	.animation-duration(200ms);
+}
+
+/* slide down */
+.slidedown.out {
+	.animation-name(slideouttobottom);
+	.animation-duration(250ms);
+}
+.slidedown.in {
+	.transform(translateY(0));
+	.animation-name(slideinfromtop);
+	.animation-duration(250ms);
+}
+.slidedown.in.reverse {
+	.animation-name(slideinfrombottom);
+	.animation-duration(200ms);
+}
+.slidedown.out.reverse {
+	.transform(translateY(-100%));
+	.animation-name(slideouttotop);
+	.animation-duration(200ms);
+}
+/* slide up */
+.slideup.out {
+	.animation-name(slideouttotop);
+	.animation-duration(250ms);
+}
+.slideup.in {
+	.transform(translateY(0));
+	.animation-name(slideinfrombottom);
+	.animation-duration(250ms);
+}
+.slideup.in.reverse {
+	.animation-name(slideinfromtop);
+	.animation-duration(200ms);
+}
+.slideup.out.reverse {
+	.transform(translateY(100%));
+	.animation-name(slideouttobottom);
+	.animation-duration(200ms);
+}
+
+@-webkit-keyframes slideinfromright {.slideinfromright(webkit)}
+@-moz-keyframes slideinfromright {.slideinfromright(moz)}
+@-ms-keyframes slideinfromright {.slideinfromright(ms)}
+@-o-keyframes slideinfromright {.slideinfromright(o)}
+@keyframes slideinfromright {.slideinfromright()}
+
+@-webkit-keyframes slideinfromleft {.slideinfromleft(webkit)}
+@-moz-keyframes slideinfromleft {.slideinfromleft(moz)}
+@-ms-keyframes slideinfromleft {.slideinfromleft(ms)}
+@-o-keyframes slideinfromleft {.slideinfromleft(o)}
+@keyframes slideinfromleft {.slideinfromleft()}
+
+@-webkit-keyframes slideouttoleft {.slideouttoleft(webkit)}
+@-moz-keyframes slideouttoleft {.slideouttoleft(moz)}
+@-ms-keyframes slideouttoleft {.slideouttoleft(ms)}
+@-o-keyframes slideouttoleft {.slideouttoleft(o)}
+@keyframes slideouttoleft {.slideouttoleft()}
+
+@-webkit-keyframes slideouttoright {.slideouttoright(webkit)}
+@-moz-keyframes slideouttoright {.slideouttoright(moz)}
+@-ms-keyframes slideouttoright {.slideouttoright(ms)}
+@-o-keyframes slideouttoright {.slideouttoright(o)}
+@keyframes slideouttoright {.slideouttoright()}
+
+@-webkit-keyframes slideinfromtop {.slideinfromtop(webkit)}
+@-moz-keyframes slideinfromtop {.slideinfromtop(moz)}
+@-ms-keyframes slideinfromtop {.slideinfromtop(ms)}
+@-o-keyframes slideinfromtop {.slideinfromtop(o)}
+@keyframes slideinfromtop {.slideinfromtop()}
+
+@-webkit-keyframes slideouttotop {.slideouttotop(webkit)}
+@-moz-keyframes slideouttotop {.slideouttotop(moz)}
+@-ms-keyframes slideouttotop {.slideouttotop(ms)}
+@-o-keyframes slideouttotop {.slideouttotop(o)}
+@keyframes slideouttotop {.slideouttotop()}
+
+@-webkit-keyframes slideinfrombottom {.slideinfrombottom(webkit)}
+@-moz-keyframes slideinfrombottom {.slideinfrombottom(moz)}
+@-ms-keyframes slideinfrombottom {.slideinfrombottom(ms)}
+@-o-keyframes slideinfrombottom {.slideinfrombottom(o)}
+@keyframes slideinfrombottom {.slideinfrombottom()}
+
+@-webkit-keyframes slideouttobottom {.slideouttobottom(webkit)}
+@-moz-keyframes slideouttobottom {.slideouttobottom(moz)}
+@-ms-keyframes slideouttobottom {.slideouttobottom(ms)}
+@-o-keyframes slideouttobottom {.slideouttobottom(o)}
+@keyframes slideouttobottom {.slideouttobottom()}

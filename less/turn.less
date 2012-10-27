@@ -1,0 +1,94 @@
+/**
+ * turn
+ **/
+
+/* The properties in this rule are only necessary for the 'flip' transition.
+ * We need specify the perspective to create a projection matrix. This will add
+ * some depth as the element flips. The depth number represents the distance of
+ * the viewer from the z-plane. According to the CSS3 spec, 1000 is a moderate
+ * value.
+ */
+ 
+.flipouttoleft(@v:null) {
+	from {
+		.transform(@v,rotateY(0));
+	}
+	to {
+		.transform(@v,rotateY(-90deg) scale(.9));
+	}
+}
+.flipouttoright(@v:null) {
+	from {
+		.transform(@v,rotateY(0))
+	}
+	to {
+		.transform(@v,rotateY(90deg) scale(.9))
+	}
+}
+.flipintoleft(@v:null) {
+	from {
+		.transform(@v,rotateY(-90deg) scale(.9))
+	}
+	to {
+		.transform(@v,rotateY(0))
+	}
+}
+.flipintoright(@v:null) {
+	from {
+		.transform(@v,rotateY(90deg) scale(.9))
+	}
+	to {
+		.transform(@v,rotateY(0))
+	}
+}
+
+.viewport-turn {
+	.perspective(1000);
+	position: absolute;
+}
+.turnleft,.turnright {
+	.backface-visibility(hidden);
+	.transform(translateX(0));
+	/* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when visibility:hidden is used. */
+	.transform-origin(0);
+	.animation-duration(250ms);
+}
+.turnleft.out,.turnright.out.reverse {
+	.transform(rotateY(-90deg) scale(.9));
+	.animation-name(flipouttoleft);
+}
+.turnleft.in,.turnright.in.reverse {
+	.animation-name(flipintoright);
+}
+.turnleft.out.reverse,.turnright.out {
+	.transform(rotateY(90deg) scale(.9));
+	.animation-name(flipouttoright);
+}
+.turnleft.in.reverse,.turnright.in {
+	.animation-name(flipintoleft);
+}
+
+@-webkit-keyframes flipouttoleft {.flipouttoleft(webkit)}
+@-moz-keyframes flipouttoleft {.flipouttoleft(moz)}
+@-ms-keyframes flipouttoleft {.flipouttoleft(ms)}
+@-o-keyframes flipouttoleft {.flipouttoleft(o)}
+@keyframes flipouttoleft {.flipouttoleft()}
+
+@-webkit-keyframes flipouttoright {.flipouttoright(webkit)}
+@-moz-keyframes flipouttoright {.flipouttoright(moz)}
+@-ms-keyframes flipouttoright {.flipouttoright(ms)}
+@-o-keyframes flipouttoright {.flipouttoright(o)}
+@keyframes flipouttoright {.flipouttoright()}
+
+@-webkit-keyframes flipintoleft {.flipintoleft(webkit)}
+@-moz-keyframes flipintoleft {.flipintoleft(moz)}
+@-ms-keyframes flipintoleft {.flipintoleft(ms)}
+@-o-keyframes flipintoleft {.flipintoleft(o)}
+@keyframes flipintoleft {.flipintoleft()}
+
+
+@-webkit-keyframes flipintoright {.flipintoright(webkit)}
+@-moz-keyframes flipintoright {.flipintoright(moz)}
+@-ms-keyframes flipintoright {.flipintoright(ms)}
+@-o-keyframes flipintoright {.flipintoright(o)}
+@keyframes flipintoright {.flipintoright()}

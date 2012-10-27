@@ -1,0 +1,58 @@
+/**
+ * popup/popout
+ **/
+
+.popin(@v:null) {
+	from {
+		.transform(@v,scale(.8));
+		.opacity(@v,0);
+	}
+	to {
+		.transform(@v,scale(1));
+		.opacity(@v,1);
+	}
+}
+.popout(@v:null) {
+	from {
+		.transform(@v,scale(1));
+		.opacity(@v,1);
+	}
+	to {
+		.transform(@v,scale(.8));
+		.opacity(@v,0);
+	}
+}
+
+.popup,.popdown {
+	.transform-origin(50% 50%);
+}
+.popup.in,.popdown.in.reverse {
+	.transform(scale(1));
+    .opacity(1);
+	.animation-name(popin);
+	.animation-duration(350ms);
+}
+.popup.out,.popdown.out.reverse {
+	.animation-name(fadeout);
+	.opacity(0);
+	.animation-duration(100ms);
+}
+.popup.in.reverse,.popdown.in {
+	.animation-name(fadein);
+}
+.popup.out.reverse,.popdown.out {
+	.transform(scale(.8));
+	.animation-name(popout);
+}
+
+@-webkit-keyframes popin {.popin(webkit)}
+@-moz-keyframes popin {.popin(moz)}
+@-ms-keyframes popin {.popin(ms)}
+@-o-keyframes popin {.popin(o)}
+@keyframes popin {.popin()}
+
+@-webkit-keyframes popout {.popout(webkit)}
+@-moz-keyframes popout {.popout(moz)}
+@-ms-keyframes popout {.popout(ms)}
+@-o-keyframes popout {.popout(o)}
+@keyframes popout {.popout()}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jqMini JS</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../../jqMini.css" />
+<style>
+	body {
+		background: #ccc;
+	}
+	.page {
+		background: #eee;
+		padding: 2%;
+	}
+	#app-title {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%,-50%);
+		-moz-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+		text-align: center;
+	}
+	#app-title small {
+		font-size: 10px;
+	}
+	
+	.loading {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		min-height: 100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+		
+		background: #eee;
+		padding: 2%;
+	}
+	
+</style>
+</head>
+<body>
+	
+	<div id="jqmini" class="jqMini">
+		<div id="main" class="current loading">
+			<div id="app-title">
+				<h1>jQuery Mobile Mini</h1>
+				<div>
+					Sample App<br>
+					<small>Porwerd By jqMini.js</small>
+				</div>
+				<p><img src="ajax-loader.gif" alt="Now Loading..."></p>
+			</div>
+		</div>
+		<div id="menu" class="page">
+			<h1>Welcome</h1>
+			<p>Sample App Menu</p>
+			<ul>
+				<li><a href="#page1">Menu1</a></li>
+				<li><a href="#page2">Menu2</a></li>
+				<li><a href="#page3">Menu3</a></li>
+				<li><a href="#page4">Menu4</a></li>
+			</ul>
+		</div>
+		<div id="page1" class="page">
+			<p><a href="#menu" data-reverse="true">メニューへ戻る</a></p>
+			<h1>Page1</h1>
+		</div>
+		<div id="page2" class="page">
+			<p><a href="#menu" data-reverse="true">メニューへ戻る</a></p>
+			<h1>Page2</h1>
+		</div>
+		<div id="page3" class="page">
+			<p><a href="#menu" data-reverse="true">メニューへ戻る</a></p>
+			<h1>Page3</h1>
+		</div>
+		<div id="page4" class="page">
+			<p><a href="#menu" data-reverse="true">メニューへ戻る</a></p>
+			<h1>Page4</h1>
+		</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="jquery.touchSwipe.js"></script>
+<script src="../../jqMini.js"></script>
+<script>
+	var jqmini = $("#jqmini").jqMini({
+		scrollCheck: false,
+		hash: false,
+		transition: "slideleft"
+	});
+	
+	$(window).ready(function() {
+		//トップページを見せるための待ち時間
+		window.setTimeout(function() {
+			init();
+		},2000);
+	});
+	
+	function init() {
+		
+		jqmini.goTo("#menu",{
+			transition: "flipleft"
+		});
+		
+		var swipeOptions = {
+			swipeLeft:swipeLeft,
+			swipeRight:swipeRight,
+			threshold:30
+		}
+		$(document.body).swipe( swipeOptions );
+		
+		function swipeLeft(event, direction) {
+			jqmini.next();
+		}
+		function swipeRight(event, direction) {
+			jqmini.prev();
+		}
+	}
+	
+</script>
+</body>
+</html>

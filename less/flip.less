@@ -1,0 +1,169 @@
+/**
+ * flip
+ **/
+
+/* The properties in this rule are only necessary for the 'flip' transition.
+ * We need specify the perspective to create a projection matrix. This will add
+ * some depth as the element flips. The depth number represents the distance of
+ * the viewer from the z-plane. According to the CSS3 spec, 1000 is a moderate
+ * value.
+ */
+
+
+.flipouttoleft(@v:null) {
+	from { 
+		.transform(@v,rotateY(0))
+	}
+	to { 
+		.transform(@v,rotateY(-90deg) scale(.9))
+	}
+}
+.flipouttoright(@v:null) {
+	from { 
+		.transform(@v,rotateY(0))
+	}
+	to {
+		.transform(@v,rotateY(90deg) scale(.9))
+	}
+}
+.flipintoleft(@v:null) {
+	from {
+		.transform(@v,rotateY(-90deg) scale(.9))
+	}
+	to { 
+		.transform(@v,rotateY(0))
+	}
+}
+.flipintoright(@v:null) {
+	from { 
+		.transform(@v,rotateY(90deg) scale(.9))
+	}
+	to {
+		.transform(@v,rotateY(0))
+	}
+}
+.flipouttotop(@v:null) {
+	from {
+		.transform(@v,rotateX(0))
+	}
+	to {
+		.transform(@v,rotateX(-90deg) scale(.9))
+	}
+}
+.flipouttobottom(@v:null) {
+	from {
+		.transform(@v,rotateX(0))
+	}
+	to {
+		.transform(@v,rotateX(90deg) scale(.9))
+	}
+}
+.flipintobottom(@v:null) {
+	from {
+		.transform(@v,rotateX(-90deg) scale(.9))
+	}
+	to {
+		.transform(@v,rotateX(0))
+	}
+}
+.flipintotop(@v:null) {
+	from {
+		.transform(@v,rotateX(90deg) scale(.9))
+	}
+	to { 
+		.transform(@v,rotateX(0))
+	}
+}
+
+.viewport-flip {
+	.perspective(1000);
+	position: absolute;
+}
+.flipleft,.flipright {
+	.animation-duration(225ms);
+	.backface-visibility(hidden);
+	.transform(translateX(0));
+	/* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when visibility:hidden is used. */
+}
+.flipleft.out,.flipright.out.reverse {
+	.transform(rotateY(-90deg) scale(.9));
+	.animation-name(flipouttoleft);
+}
+.flipleft.in,.flipright.in.reverse {
+	.animation-name(flipintoright);
+}
+.flipleft.out.reverse,.flipright.out {
+	.transform(rotateY(90deg) scale(.9));
+	.animation-name(flipouttoright);
+}
+.flipleft.in.reverse,.flipright.in {
+	.animation-name(flipintoleft);
+}
+
+.flipup,.flipdown {
+	.backface-visibility(hidden);
+	.animation-duration(225ms);
+}
+.flipup.out,.flipdown.out.reverse {
+	.transform(rotateX(-90deg) scale(.9));
+	.animation-name(flipouttotop);
+}
+.flipup.in,.flipdown.in.reverse {
+	.animation-name(flipintotop);
+}
+.flipup.out.reverse,.flipdown.out {
+	.transform(rotateX(90deg) scale(.9));
+	.animation-name(flipouttobottom);
+}
+.flipup.in.reverse,.flipdown.in {
+	.animation-name(flipintobottom);
+}
+
+
+@-webkit-keyframes flipouttoleft {.flipouttoleft(webkit)}
+@-moz-keyframes flipouttoleft {.flipouttoleft(moz)}
+@-ms-keyframes flipouttoleft {.flipouttoleft(ms)}
+@-o-keyframes flipouttoleft {.flipouttoleft(o)}
+@keyframes flipouttoleft {.flipouttoleft()}
+
+@-webkit-keyframes flipouttoright {.flipouttoright(webkit)}
+@-moz-keyframes flipouttoright {.flipouttoright(moz)}
+@-ms-keyframes flipouttoright {.flipouttoright(ms)}
+@-o-keyframes flipouttoright {.flipouttoright(o)}
+@keyframes flipouttoright {.flipouttoright()}
+
+@-webkit-keyframes flipintoleft {.flipintoleft(webkit)}
+@-moz-keyframes flipintoleft {.flipintoleft(moz)}
+@-ms-keyframes flipintoleft {.flipintoleft(ms)}
+@-o-keyframes flipintoleft {.flipintoleft(o)}
+@keyframes flipintoleft {.flipintoleft()}
+
+@-webkit-keyframes flipintoright {.flipintoright(webkit)}
+@-moz-keyframes flipintoright {.flipintoright(moz)}
+@-ms-keyframes flipintoright {.flipintoright(ms)}
+@-o-keyframes flipintoright {.flipintoright(o)}
+@keyframes flipintoright {.flipintoright()}
+
+@-webkit-keyframes flipouttotop {.flipouttotop(webkit)}
+@-moz-keyframes flipouttotop {.flipouttotop(moz)}
+@-ms-keyframes flipouttotop {.flipouttotop(ms)}
+@-o-keyframes flipouttotop {.flipouttotop(o)}
+@keyframes flipouttotop {.flipouttotop()}
+
+@-webkit-keyframes flipouttobottom {.flipouttobottom(webkit)}
+@-moz-keyframes flipouttobottom {.flipouttobottom(moz)}
+@-ms-keyframes flipouttobottom {.flipouttobottom(ms)}
+@-o-keyframes flipouttobottom {.flipouttobottom(o)}
+@keyframes flipouttobottom {.flipouttobottom()}
+
+@-webkit-keyframes flipintobottom {.flipintobottom(webkit)}
+@-moz-keyframes flipintobottom {.flipintobottom(moz)}
+@-ms-keyframes flipintobottom {.flipintobottom(ms)}
+@-o-keyframes flipintobottom {.flipintobottom(o)}
+@keyframes flipintobottom {.flipintobottom()}
+
+@-webkit-keyframes flipintotop {.flipintotop(webkit)}
+@-moz-keyframes flipintotop {.flipintotop(moz)}
+@-ms-keyframes flipintotop {.flipintotop(ms)}
+@-o-keyframes flipintotop {.flipintotop(o)}
+@keyframes flipintotop {.flipintotop()}

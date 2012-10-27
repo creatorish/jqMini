@@ -1,0 +1,103 @@
+/**
+ * roll
+ **/
+
+.rollinfromleft(@v:null) {
+	0% {
+		.transform(@v,rotateZ(-90deg));
+	}
+	100% {
+		.transform(@v,rotateZ(0deg));
+	}
+}
+.rollinfromright(@v:null) {
+	0% {
+		.transform(@v,rotateZ(90deg));
+	}
+	100% {
+		.transform(@v,rotateZ(0deg));
+	}
+}
+.rollouttoright(@v:null) {
+	0% {
+		.transform(@v,rotateZ(0deg));
+	}
+	100% {
+		.transform(@v,rotateZ(90deg));
+	}
+}
+.rollouttoleft(@v:null) {
+	0% {
+		.transform(@v,rotateZ(0deg));
+	}
+	100% {
+		.transform(@v,rotateZ(-90deg));
+	}
+}
+
+.rollleft.out, .rollleft.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.rollleft.out {
+	.transform(rotateZ(-90deg));
+	.animation-name(rollouttoleft);
+}
+.rollleft.in {
+	.transform(rotateZ(0deg));
+	.animation-name(rollinfromright);
+}
+.rollleft.out.reverse {
+	.transform(rotateZ(90deg));
+	.animation-name(rollouttoright);
+}
+.rollleft.in.reverse {
+	.transform(rotateZ(0deg));
+	.animation-name(rollinfromleft);
+}
+
+.rollright.out, .rollright.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.rollright.out {
+	.transform(rotateZ(90deg));
+	.animation-name(rollouttoright);
+}
+.rollright.in {
+	.transform(rotateZ(0deg));
+	.animation-name(rollinfromleft);
+}
+.rollright.out.reverse {
+	.transform(rotateZ(-90deg));
+	.animation-name(rollouttoleft);
+}
+.rollright.in.reverse {
+	.transform(rotateZ(0deg));
+	.animation-name(rollinfromright);
+}
+
+
+@-webkit-keyframes rollinfromleft {.rollinfromleft(webkit)}
+@-moz-keyframes rollinfromleft {.rollinfromleft(moz)}
+@-ms-keyframes rollinfromleft {.rollinfromleft(ms)}
+@-o-keyframes rollinfromleft {.rollinfromleft(o)}
+@keyframes rollinfromleft {.rollinfromleft()}
+
+@-webkit-keyframes rollinfromright {.rollinfromright(webkit)}
+@-moz-keyframes rollinfromright {.rollinfromright(moz)}
+@-ms-keyframes rollinfromright {.rollinfromright(ms)}
+@-o-keyframes rollinfromright {.rollinfromright(o)}
+@keyframes rollinfromright {.rollinfromright()}
+
+@-webkit-keyframes rollouttoright {.rollouttoright(webkit)}
+@-moz-keyframes rollouttoright {.rollouttoright(moz)}
+@-ms-keyframes rollouttoright {.rollouttoright(ms)}
+@-o-keyframes rollouttoright {.rollouttoright(o)}
+@keyframes rollouttoright {.rollouttoright()}
+
+@-webkit-keyframes rollouttoleft {.rollouttoleft()}
+@-moz-keyframes rollouttoleft {.rollouttoleft(moz)}
+@-ms-keyframes rollouttoleft {.rollouttoleft(ms)}
+@-o-keyframes rollouttoleft {.rollouttoleft(o)}
+@keyframes rollouttoleft {.rollouttoleft()}

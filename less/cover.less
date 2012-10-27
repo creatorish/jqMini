@@ -1,0 +1,89 @@
+/**
+ * cover
+ * required: slide.less,wait.less
+ **/
+
+
+.coverleft.out, .coverleft.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350m);
+}
+.coverleft.out {
+	.transform(translateX(0));
+	.animation-name(wait);
+}
+.coverleft.in {
+	.transform(translateX(100%));
+	.animation-name(slideinfromright);
+}
+.coverleft.out.reverse {
+	.transform(translateX(100%));
+	.animation-name(slideouttoright);
+}
+.coverleft.in.reverse {
+	.transform(translateX(0));
+	.animation-name(wait);
+}
+
+.coverright.out, .coverright.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.coverright.out {
+	.transform(translateX(-100%));
+	.animation-name(wait);
+}
+.coverright.in {
+	.transform(translateX(0));
+	.animation-name(slideinfromleft);
+}
+.coverright.out.reverse {
+	.transform(translateX(100%));
+	.animation-name(slideouttoleft);
+}
+.coverright.in.reverse {
+	.transform(translateX(0));
+	.animation-name(wait);
+}
+
+.coverup.out,.coverup.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.coverup.out {
+	.transform(translateY(0));
+	.animation-name(wait);
+}
+.coverup.in {
+	.transform(translateY(0));
+	.animation-name(slideinfromtop);
+}
+.coverup.out.reverse {
+	.transform(translateY(100%));
+	.animation-name(slideouttotop);
+}
+.coverup.in.reverse {
+	.transform(translateY(0));
+	.animation-name(wait);
+}
+
+.coverdown.out,.coverdown.in {
+	.animation-timing-function(ease-out);
+	.animation-duration(350ms);
+}
+.coverdown.out {
+	.transform(translateY(0));
+	.animation-name(wait);
+}
+.coverdown.in {
+	.transform(translateY(0));
+	.animation-name(slideinfrombottom);
+}
+.coverdown.out.reverse {
+	.transform(translateY(100%));
+	.animation-name(slideouttobottom);
+}
+.coverdown.in.reverse {
+	.transform(translateY(0));
+	.animation-name(wait);
+}

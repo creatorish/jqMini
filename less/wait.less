@@ -1,0 +1,18 @@
+/**
+ * wait
+ **/
+
+.wait(@v:null) {
+	from {
+		.transform(@v,scale(1,1));
+	}
+	to {
+		.transform(@v,scale(1,1));
+	}
+}
+
+@-webkit-keyframes wait {.wait(webkit)}
+@-moz-keyframes wait {.wait(moz)}
+@-ms-keyframes wait {.wait(ms)}
+@-o-keyframes wait {.wait(o)}
+@keyframes wait {.wait()}
