@@ -6,7 +6,7 @@ jQueryMobileの画面遷移機能だけ使いたいなぁという人のため�
 
 デモ
 ------
-<a href="http://dev.creatorish.com/demo/jqmini1.1/" target="_blank">http://dev.creatorish.com/demo/jqmini1.1/</a>
+http://dev.creatorish.com/demo/jqmini1.1/
 
 使い方
 ------
