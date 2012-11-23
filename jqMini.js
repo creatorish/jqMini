@@ -100,7 +100,6 @@ $.fn.jqMini = function(op) {
 		if (setting.hash) {
 			if (pushStateEnabled) {
 				$(window).bind("popstate", popStateHandler);
-				popStateHandler();
 			} else {
 				window.setInterval(popStateHandler,100);
 			}
