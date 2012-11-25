@@ -4,9 +4,13 @@ jqMini.js
 シンプルに画面遷移の機能だけを実装することができます。  
 jQueryMobileの画面遷移機能だけ使いたいなぁという人のためのフレームワークです。
 
+公式サイト
+------
+http://dev.creatorish.com/jqmini/
+
 デモ
 ------
-http://dev.creatorish.com/demo/jqmini1.1/
+http://dev.creatorish.com/demo/jqmini1.2/
 
 使い方
 ------
@@ -33,7 +37,7 @@ currentクラスを付けたシーンが初期シーンになります
 
 ### JavaScript ###
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="jqMini.js"></script>
     <script>
         $("#jqmini").jqMini();
@@ -55,6 +59,14 @@ hrefに遷移先のIDを、data-transitionにアニメーション名を記述�
     
 data-reverse=”true”を追加するだけで、アニメーションが逆向きになります。  
 またscrollCheckがtrueのときはスクロール位置を復元します。
+
+### 内部リンク ###
+
+    <div id="page2" class="page">
+        <a href="#scene2" data-inline"true">Scene2</a>
+    </div>
+    
+data-inline=”true”を追加するとページ遷移はせず、同じページ内でスムーススクロールで遷移します。
 
 ### 外部リンク ###
 
@@ -112,6 +124,7 @@ rel=”external”をつけると外部リンクになります。（externalは
         transition: "fade",
         scrollCheck: true,
         scrollTime: 150,
+        scrollEasing: "swing"
         external: "external",
         hash: true
     });
@@ -119,6 +132,7 @@ rel=”external”をつけると外部リンクになります。（externalは
 +    transition: "fade" : data-transitionが記述されていないときの 初期アニメーション名です。
 +    scrollCheck: true : シーン切り替え時にスクロール位置を保存するかどうかです。data-reverse="true"のときにスクロール位置を復元します。
 +    scrollTime: 150 : スクロール復元時のアニメーション時間（ミリ秒）
++    scrollEasing: "swing" : スクロール復元時のイージング
 +    external: "external" : rel属性にこの値がついているものを外部リンクとして扱います
 +    hash: true : URLハッシュによる画面遷移を行うかどうかです。
 
@@ -153,7 +167,9 @@ changePage,preShow,preHideのいずれかの場合でreturn false;すること�
 グローバル関数
 ------
 
-jqMiniオブジェクトには1つだけ関数があります。
+jqMiniオブジェクトには関数があります。
+
+### goto ###
 
     var jqmini = $("#jqmini").jqMini();
     jqmini.goTo("#scene01",{
@@ -162,6 +178,20 @@ jqMiniオブジェクトには1つだけ関数があります。
     });
 
 指定シーンに遷移することができます。上のソースではscene01にスライドしながら遷移します。
+
+### next ###
+
+    var jqmini = $("#jqmini").jqMini();
+    jqmini.next();
+
+次のシーンに遷移することができます。次のシーンがない場合は無視されます。
+
+### prev ###
+
+    var jqmini = $("#jqmini").jqMini();
+    jqmini.prev();
+
+前のシーンに遷移することができます。前のシーンがない場合は無視されます。
 
 ライセンス
 --------
