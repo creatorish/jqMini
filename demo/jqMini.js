@@ -6,8 +6,8 @@
  * Required: jQuery(http://jquery.com/)
  * Inspired: jQuery Mobile(http://jquerymobile.com/)
  * License: MIT
- * Update: 2012/10/15
- * Version: 1.1.0
+ * Update: 2012/11/25
+ * Version: 1.2.0
  * Author: yuu.creatorish
  * URL: http://creatorish.com
  * PluginURL: http://creatorish.com/lab/4832
@@ -28,7 +28,8 @@ $.fn.jqMini = function(op) {
 	var setting = {
 		transition: "fade",
 		scrollCheck: true,
-		scrollTime: 150,
+		scrollTime: 450,
+		scrollEasing: "swing",
 		external: "external",
 		hash: true
 	};
@@ -50,13 +51,16 @@ $.fn.jqMini = function(op) {
 		sync: false,
 		direction: "out",
 		from: null,
-		to: null
+		to: null,
+		inline: false
 	};
 	var currentId = null;
 	
 	var animationEnd = "webkitTransitionEnd";
 	var animationEnabled = true;
 	var pushStateEnabled = (window.history.pushState !== undefined);
+	
+	var scrollData = jQuery({st: 0, sl: 0});
 	
 	var css3support = (function(elm){
 		var props = [
@@ -154,12 +158,14 @@ $.fn.jqMini = function(op) {
 			var back = $(this).attr("data-back");
 			var hash = $(this).attr("data-hash");
 			var scrollTarget = $(this).attr("data-scrollTarget");
+			var inline = Boolean($(this).attr("data-inline"));
 			changePage(href,{
 				transition: trans,
 				reverse: reverse,
 				back: back,
 				hash: hash,
-				scrollTarget: scrollTarget
+				scrollTarget: scrollTarget,
+				inline: inline
 			});
 			e.preventDefault();
 		}
@@ -193,6 +199,11 @@ $.fn.jqMini = function(op) {
 			return;
 		} else if (to.length === 0) {
 			consoleError('Not Found "To Page"');
+			return;
+		}
+		
+		if (options.inline) {
+			smoothScroll(to.offset().left,to.offset().top);
 			return;
 		}
 		
@@ -281,64 +292,88 @@ $.fn.jqMini = function(op) {
 			
 			from.trigger(jqMiniEvent.hide,[to]);
 			to.trigger(jqMiniEvent.show,[from]);
-			
+						
 			if (options.reverse && setting.scrollCheck && to.data("scroll")) {
-				scrollTo(to.data("scroll"),setting.scrollTime);
+				smoothScroll(0,to.data("scroll"));
 			} else {
 				scrollTo(1,0);
 			}
 			return;
 		}
 		
-		from.bind(css3support.animationEnd, function() {
-			$(this).unbind(css3support.animationEnd);
-			$(this).removeClass(options.transition + " out current" + rev);
-			if (options.sync) {
-				to.addClass("in").fadeIn(0).addClass(options.transition + " " + rev).scrollTop(0);
-			} else {
-				if (options.scrollTarget) {
-					$("html,body").animate({
-						scrollTop: $(options.scrollTarget).offset().top
-					},setting.scrollTime);
-				}
-				if (options.reverse && setting.scrollCheck && to.data("scroll")) {
-					$("html,body").animate({
-						scrollTop: to.data("scroll")
-					},setting.scrollTime);
-				} else {
-					scrollTo(1,0);
-				}
-			}
-			$(this).trigger(jqMiniEvent.hide,[to]);
-		});
-		
-		to.bind(css3support.animationEnd, function() {
-			$(this).unbind(css3support.animationEnd);
-			$(this).removeClass(options.transition + " in" + rev).addClass("current");
-			self.removeClass("viewport-flip viewport-turn");
-			
-			if (options.sync) {
-				if (options.reverse && setting.scrollCheck && $(this).data("scroll")) {
-					$("html,body").animate({
-						scrollTop: $(this).data("scroll")
-					},setting.scrollTime);
-				} else {
-					scrollTo(1,0);
-				}
-			}
-			
-			isAnimation = false;
-			
-			$(this).trigger(jqMiniEvent.show,[from]);
-			self.trigger(jqMiniEvent.changeEnd,[from,to]);
-		});
-		
-		from.addClass("out").fadeIn(0).addClass(options.transition + " " + rev).scrollTop(options.scrollPos);
-		
+		from.bind(css3support.animationEnd, [options,rev,from,to], fromAnimationEnd);
+		to.bind(css3support.animationEnd, [options,rev,from,to], toAnimationEnd);
+		from.addClass("out").addClass(options.transition + " " + rev).scrollTop(options.scrollPos);
 		if (!options.sync) {
-			to.addClass("in").fadeIn(0).addClass(options.transition + " " + rev).scrollTop(0);
+			to.addClass("in").addClass(options.transition + " " + rev).scrollTop(0);
 		}
 		scrollTo(1,10);
+	}
+	
+	function fromAnimationEnd(e) {
+		var options = e.data[0];
+		var rev = e.data[1];
+		var from = e.data[2];
+		var to = e.data[3];
+		$(this).unbind(css3support.animationEnd,fromAnimationEnd);
+		$(this).removeClass(options.transition + " out current" + rev);
+		if (options.sync) {
+			to.addClass("in").addClass(options.transition + " " + rev).scrollTop(0);
+		} else {
+			if (options.scrollTarget) {
+				smoothScroll(0,$(options.scrollTarget).offset().top);
+			}
+			if (options.reverse && setting.scrollCheck && to.data("scroll")) {
+				smoothScroll(0,to.data("scroll"));
+			} else {
+				scrollTo(1,0);
+			}
+		}
+		$(this).trigger(jqMiniEvent.hide,[to]);
+	}
+	function toAnimationEnd(e) {
+		var options = e.data[0];
+		var rev = e.data[1];
+		var from = e.data[2];
+		var to = e.data[3];
+		$(this).unbind(css3support.animationEnd, toAnimationEnd);
+		$(this).removeClass(options.transition + " in" + rev).addClass("current");
+		self.removeClass("viewport-flip viewport-turn");
+		
+		if (options.sync) {
+			if (options.reverse && setting.scrollCheck && $(this).data("scroll")) {
+				smoothScroll(0, $(this).data("scroll"));
+			} else {
+				scrollTo(1,0);
+			}
+		}
+		
+		isAnimation = false;
+		
+		$(this).trigger(jqMiniEvent.show,[from]);
+		self.trigger(jqMiniEvent.changeEnd,[from,to]);
+		
+		$(window).resize();
+	}
+	
+	function smoothScroll(x,y) {
+		scrollData.attr({
+			st: $(window).scrollTop(),
+			sl: $(window).scrollLeft()
+		});
+		scrollData.stop(true).animate({
+			st: y,
+			sl: x
+		}, {
+			duration: setting.scrollTime,
+			easing: setting.scrollEasing,
+			step: scrollHandler,
+			complete: scrollHandler
+		});
+	}
+	
+	function scrollHandler() {
+		window.scrollTo(this.sl,this.st);
 	}
 	
 	function scrollTo(val,time) {
