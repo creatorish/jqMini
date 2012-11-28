@@ -1,0 +1,320 @@
+/**
+ * slide
+ **/
+ 
+@mixin slideinfromright($vendor:null) {
+	from { 
+		@include transform(translateX(100%),$vendor);
+	}
+	to {
+		@include transform(translateX(0),$vendor);
+	}
+}
+@mixin slideinfromleft($vendor:null) {
+	from { 
+		@include transform(translateX(-100%),$vendor);
+	}
+	to {
+		@include transform(translateX(0),$vendor);
+	}
+}
+@mixin slideouttoleft($vendor:null) {
+	from { 
+		@include transform(translateX(0),$vendor);
+	}
+	to {
+		@include transform(translateX(-100%),$vendor);
+	}
+}
+@mixin slideouttoright($vendor:null) {
+	from { 
+		@include transform(translateX(0),$vendor);
+	}
+	to {
+		@include transform(translateX(100%),$vendor);
+	}
+}
+@mixin slideinfromtop($vendor:null) {
+	from { 
+		@include transform(translateY(-100%),$vendor);
+	}
+	to {
+		@include transform(translateY(0),$vendor);
+	}
+}
+@mixin slideouttotop($vendor:null) {
+	from { 
+		@include transform(translateY(0),$vendor);
+	}
+	to {
+		@include transform(translateY(-100%),$vendor);
+	}
+}
+@mixin slideinfrombottom($vendor:null) {
+	from { 
+		@include transform(translateY(100%),$vendor);
+	}
+	to {
+		@include transform(translateY(0),$vendor);
+	}
+}
+@mixin slideouttobottom($vendor:null) {
+	from { 
+		@include transform(translateY(0),$vendor);
+	}
+	to {
+		@include transform(translateY(100%),$vendor);
+	}
+}
+
+.slideleft.out,.slideleft.in,.slideright.out,.slideright.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.slideleft.out,.slideright.out.reverse {
+	@include transform(translateX(-100%));
+	@include animation-name(slideouttoleft);
+}
+.slideleft.in,.slideright.in.reverse {
+	@include transform(translateX(0));
+	@include animation-name(slideinfromright);
+}
+.slideleft.out.reverse,.slideright.out {
+	@include transform(translateX(100%));
+	@include animation-name(slideouttoright);
+}
+.slideleft.in.reverse,.slideright.in {
+	@include transform(translateX(0));
+	@include animation-name(slideinfromleft);
+}
+
+.slidefadeleft.out,.slidefaderight.out.reverse {
+	@include transform(translateX(-100%));
+	@include animation-name(slideouttoleft);
+	@include animation-duration(200ms);
+}
+.slidefadeleft.in,.slidefaderight.in.reverse {
+	@include transform(translateX(0));
+	@include animation-name(fadein);
+	@include animation-duration(200ms);
+}
+.slidefadeleft.out.reverse,.slidefaderight.out {
+	@include transform(translateX(100%));
+	@include animation-name(slideouttoright);
+	@include animation-duration(200ms);
+}
+.slidefadeleft.in.reverse,.slidefaderight.in {
+	@include transform(translateX(0));
+	@include animation-name(fadein);
+	@include animation-duration(200ms);
+}
+
+.slidefadeup.out,.slidefadedown.out.reverse {
+	@include transform(translateY(-100%));
+	@include animation-name(slideouttotop);
+	@include animation-duration(225ms);
+}
+.slidefadeup.in,.slidefadedown.in.reverse {
+	@include transform(translateY(0));
+	@include animation-name(fadein);
+	@include animation-duration(200ms);
+}
+.slidefadeup.out.reverse,.slidefadedown.out {
+	@include transform(translateY(100%));
+	@include animation-name(slideouttobottom);
+	@include animation-duration(200ms);
+}
+.slidefadeup.in.reverse,.slidefadedown.in {
+	@include transform(translateY(0));
+	@include animation-name(fadein);
+	@include animation-duration(200ms);
+}
+
+/* slide down */
+.slidedown.out {
+	@include animation-name(slideouttobottom);
+	@include animation-duration(250ms);
+}
+.slidedown.in {
+	@include transform(translateY(0));
+	@include animation-name(slideinfromtop);
+	@include animation-duration(250ms);
+}
+.slidedown.in.reverse {
+	@include animation-name(slideinfrombottom);
+	@include animation-duration(200ms);
+}
+.slidedown.out.reverse {
+	@include transform(translateY(-100%));
+	@include animation-name(slideouttotop);
+	@include animation-duration(200ms);
+}
+/* slide up */
+.slideup.out {
+	@include animation-name(slideouttotop);
+	@include animation-duration(250ms);
+}
+.slideup.in {
+	@include transform(translateY(0));
+	@include animation-name(slideinfrombottom);
+	@include animation-duration(250ms);
+}
+.slideup.in.reverse {
+	@include animation-name(slideinfromtop);
+	@include animation-duration(200ms);
+}
+.slideup.out.reverse {
+	@include transform(translateY(100%));
+	@include animation-name(slideouttobottom);
+	@include animation-duration(200ms);
+}
+
+
+@if $use_webkit {
+	@-webkit-keyframes slideinfromright {
+		@include slideinfromright(webkit);
+	}
+	@-webkit-keyframes slideinfromleft {
+		@include slideinfromleft(webkit);
+	}
+	
+	@-webkit-keyframes slideouttoleft {
+		@include slideouttoleft(webkit);
+	}
+	@-webkit-keyframes slideouttoright {
+		@include slideouttoright(webkit);
+	}
+	
+	@-webkit-keyframes slideinfromtop {
+		@include slideinfromtop(webkit);
+	}
+	@-webkit-keyframes slideouttotop {
+		@include slideouttotop(webkit);
+	}
+	
+	@-webkit-keyframes slideinfrombottom {
+		@include slideinfrombottom(webkit);
+	}
+	@-webkit-keyframes slideouttobottom {
+		@include slideouttobottom(webkit);
+	}
+}
+
+@if $use_moz {
+	@-moz-keyframes slideinfromright {
+		@include slideinfromright(moz);
+	}
+	@-moz-keyframes slideinfromleft {
+		@include slideinfromleft(moz);
+	}
+	
+	@-moz-keyframes slideouttoleft {
+		@include slideouttoleft(moz);
+	}
+	@-moz-keyframes slideouttoright {
+		@include slideouttoright(moz);
+	}
+	
+	@-moz-keyframes slideinfromtop {
+		@include slideinfromtop(moz);
+	}
+	@-moz-keyframes slideouttotop {
+		@include slideouttotop(moz);
+	}
+	
+	@-moz-keyframes slideinfrombottom {
+		@include slideinfrombottom(moz);
+	}
+	@-moz-keyframes slideouttobottom {
+		@include slideouttobottom(moz);
+	}
+}
+
+@if $use_ms {
+	@-ms-keyframes slideinfromright {
+		@include slideinfromright(ms);
+	}
+	@-ms-keyframes slideinfromleft {
+		@include slideinfromleft(ms);
+	}
+	
+	@-ms-keyframes slideouttoleft {
+		@include slideouttoleft(ms);
+	}
+	@-ms-keyframes slideouttoright {
+		@include slideouttoright(ms);
+	}
+	
+	@-ms-keyframes slideinfromtop {
+		@include slideinfromtop(ms);
+	}
+	@-ms-keyframes slideouttotop {
+		@include slideouttotop(ms);
+	}
+	
+	@-ms-keyframes slideinfrombottom {
+		@include slideinfrombottom(ms);
+	}
+	@-ms-keyframes slideouttobottom {
+		@include slideouttobottom(ms);
+	}
+}
+
+@if $use_o {
+	@-o-keyframes slideinfromright {
+		@include slideinfromright(o);
+	}
+	@-o-keyframes slideinfromleft {
+		@include slideinfromleft(o);
+	}
+	
+	@-o-keyframes slideouttoleft {
+		@include slideouttoleft(o);
+	}
+	@-o-keyframes slideouttoright {
+		@include slideouttoright(o);
+	}
+	
+	@-o-keyframes slideinfromtop {
+		@include slideinfromtop(o);
+	}
+	@-o-keyframes slideouttotop {
+		@include slideouttotop(o);
+	}
+	
+	@-o-keyframes slideinfrombottom {
+		@include slideinfrombottom(o);
+	}
+	@-o-keyframes slideouttobottom {
+		@include slideouttobottom(o);
+	}
+}
+
+
+@keyframes slideinfromright {
+	@include slideinfromright(none);
+}
+@keyframes slideinfromleft {
+	@include slideinfromleft(none);
+}
+
+@keyframes slideouttoleft {
+	@include slideouttoleft(none);
+}
+@keyframes slideouttoright {
+	@include slideouttoright(none);
+}
+
+@keyframes slideinfromtop {
+	@include slideinfromtop(none);
+}
+@keyframes slideouttotop {
+	@include slideouttotop(none);
+}
+
+@keyframes slideinfrombottom {
+	@include slideinfrombottom(none);
+}
+@keyframes slideouttobottom {
+	@include slideouttobottom(none);
+}

@@ -6,8 +6,8 @@
  * Required: jQuery(http://jquery.com/)
  * Inspired: jQuery Mobile(http://jquerymobile.com/)
  * License: MIT
- * Update: 2012/11/25
- * Version: 1.2.0
+ * Update: 2012/11/28
+ * Version: 1.2.1
  * Author: yuu.creatorish
  * URL: http://creatorish.com
  * PluginURL: http://creatorish.com/lab/4832
@@ -221,8 +221,6 @@ $.fn.jqMini = function(op) {
 		
 		switch(options.transition) {
 			case "fade":
-			case "popup":
-			case "popdown":
 			case "flowleft":
 			case "flowright":
 			case "slidefadeleft":

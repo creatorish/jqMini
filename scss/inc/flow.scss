@@ -1,0 +1,86 @@
+/**
+ * flow
+ **/
+
+@mixin flowouttoleft($vendor:null) {
+	0% {
+		@include transform(translateX(0) scale(1),$vendor);
+	}
+	45%, 55% {
+		@include transform(translateX(0) scale(.7),$vendor);
+	}
+	100% {
+		@include transform(translateX(-100%) scale(.7),$vendor);
+	}
+}
+@mixin flowouttoright($vendor:null) {
+	0% {
+		@include transform(translateX(0) scale(1),$vendor);
+	}
+	45%, 55% {
+		@include transform(translateX(0) scale(.7),$vendor);
+	}
+	100% {
+		@include transform(translateX(100%) scale(.7),$vendor);
+	}
+}
+@mixin flowinfromleft($vendor:null) {
+	0% {
+		@include transform(translateX(-100%) scale(.7),$vendor);
+	}
+	45%, 55% {
+		@include transform(translateX(0) scale(.7),$vendor);
+	}
+	100% {
+		@include transform(translateX(0) scale(1),$vendor);
+	}
+}
+@mixin flowinfromright($vendor:null) {
+	0% {
+		@include transform(translateX(100%) scale(.7),$vendor);
+	}
+	45%, 55% {
+		@include transform(translateX(0) scale(.7),$vendor);
+	}
+	100% {
+		@include transform(translateX(0) scale(1),$vendor);
+	}
+}
+
+.flowleft,.flowright {
+	@include transform-origin(50% 30%);
+	@include box-shadow(0 0 20px rgba(0,0,0,.4));
+	@include animation-duration(350ms);
+}
+.flowleft.out,.flowright.out.reverse {
+	@include transform(translateX(-100%) scale(.7));
+	@include animation-name(flowouttoleft);
+	@include animation-timing-function(ease);
+}
+.flowleft.in,.flowright.in.reverse {
+	@include transform(translateX(0) scale(1));
+	@include animation-name(flowinfromright);
+	@include animation-timing-function(ease);
+}
+.flowleft.out.reverse,.flowright.out {
+	@include transform(translateX(100%));
+	@include animation-name(flowouttoright);
+}
+.flowleft.in.reverse,.flowright.in {
+	@include animation-name(flowinfromleft);
+}
+
+@if $use_webkit {
+	@-webkit-keyframes flowouttoleft {
+		@include flowouttoleft(webkit);
+	}
+	@-webkit-keyframes flowouttoright {
+		@include flowouttoright(webkit);
+	}
+	@-webkit-keyframes flowinfromleft {
+		@include flowinfromleft(webkit);
+	}
+	@-webkit-keyframes flowinfromright {
+		@include flowinfromright(webkit);
+	}
+}

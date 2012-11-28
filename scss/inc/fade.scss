@@ -1,0 +1,72 @@
+/**
+ * fadein/fadeout
+ **/
+ 
+@mixin fadein($vendor:null) {
+	from { 
+		@include opacity(0,$vendor);
+	}
+	to {
+		@include opacity(1,$vendor);
+	}
+}
+@mixin fadeout($vendor:null) {
+	from { 
+		@include opacity(1,$vendor);
+	}
+	to {
+		@include opacity(0,$vendor);
+	}
+}
+
+
+.fade.out {
+	@include opacity(0);
+	@include animation-duration(125ms);
+	@include animation-name(fadeout);
+}
+.fade.in {
+	@include opacity(1);
+	@include animation-duration(225ms);
+	@include animation-name(fadein);
+}
+
+
+@if $use_webkit {
+	@-webkit-keyframes fadein {
+		@include fadein(webkit);
+	}
+	@-webkit-keyframes fadeout {
+		@include fadeout(webkit);
+	}
+}
+@if $use_moz {
+	@-moz-keyframes fadein {
+		@include fadein(moz);
+	}
+	@-moz-keyframes fadeout {
+		@include fadeout(moz);
+	}
+}
+@if $use_ms {
+	@-ms-keyframes fadein {
+		@include fadein(ms);
+	}
+	@-ms-keyframes fadeout {
+		@include fadeout(ms);
+	}
+}
+@if $use_o {
+	@-o-keyframes fadein {
+		@include fadein(o);
+	}
+	@-o-keyframes fadeout {
+		@include fadeout(o);
+	}
+}
+@keyframes fadein {
+	@include fadein(none);
+}
+@keyframes fadeout {
+	@include fadeout(none);
+}

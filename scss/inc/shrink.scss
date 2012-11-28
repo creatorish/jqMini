@@ -1,0 +1,81 @@
+/**
+ * shrink
+ **/
+
+@mixin scalein($vendor:null) {
+	from { 
+		@include transform(scale(0),$vendor);
+	}
+	to {
+		@include transform(scale(1),$vendor);
+	}
+}
+@mixin scaleout($vendor:null) {
+	from { 
+		@include transform(scale(1),$vendor);
+	}
+	to {
+		@include transform(scale(0),$vendor);
+	}
+}
+
+.shrink.out, .shrink.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.shrink.out {
+	@include transform(scale(0));
+	@include animation-name(scaleout);
+}
+.shrink.in {
+	@include transform(scale(1));
+	@include animation-name(scalein);
+}
+.shrink.out.reverse {
+	@include transform(scale(0));
+	@include animation-name(scaleout);
+}
+.shrink.in.reverse {
+	@include transform(scale(1));
+	@include animation-name(scalein);
+}
+
+@if $use_webkit {
+	@-webkit-keyframes scalein {
+		@include scalein(webkit);
+	}
+	@-webkit-keyframes scaleout {
+		@include scaleout(webkit);
+	}
+}
+@if $use_moz {
+	@-moz-keyframes scalein {
+		@include scalein(moz);
+	}
+	@-moz-keyframes scaleout {
+		@include scaleout(moz);
+	}
+}
+@if $use_ms {
+	@-ms-keyframes scalein {
+		@include scalein(ms);
+	}
+	@-ms-keyframes scaleout {
+		@include scaleout(ms);
+	}
+}
+@if $use_o {
+	@-o-keyframes scalein {
+		@include scalein(o);
+	}
+	@-o-keyframes scaleout {
+		@include scaleout(o);
+	}
+}
+
+@keyframes scalein {
+	@include scalein(none);
+}
+@keyframes scaleout {
+	@include scaleout(none);
+}

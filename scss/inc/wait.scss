@@ -1,0 +1,36 @@
+/**
+ * wait
+ **/
+
+@mixin wait($vendor:null) {
+	from { 
+		@include transform(scale(1,1),$vendor);
+	}
+	to {
+		@include transform(scale(1,1),$vendor);
+	}
+}
+
+@if $use_webkit {
+	@-webkit-keyframes wait {
+		@include wait(webkit);
+	}
+}
+@if $use_moz {
+	@-moz-keyframes wait {
+		@include wait(moz);
+	}
+}
+@if $use_ms {
+	@-ms-keyframes wait {
+		@include wait(ms);
+	}
+}
+@if $use_o {
+	@-o-keyframes wait {
+		@include wait(o);
+	}
+}
+@keyframes wait {
+	@include wait(none);
+}

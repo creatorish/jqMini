@@ -1,0 +1,149 @@
+/**
+ * roll
+ **/
+
+@mixin rollinfromleft($vendor:null) {
+	from { 
+		@include transform(rotateZ(-90deg),$vendor);
+	}
+	to {
+		@include transform(rotateZ(0deg),$vendor);
+	}
+}
+@mixin rollinfromright($vendor:null) {
+	from { 
+		@include transform(rotateZ(90deg),$vendor);
+	}
+	to {
+		@include transform(rotateZ(0deg),$vendor);
+	}
+}
+@mixin rollouttoright($vendor:null) {
+	from { 
+		@include transform(rotateZ(0deg),$vendor);
+	}
+	to {
+		@include transform(rotateZ(90deg),$vendor);
+	}
+}
+@mixin rollouttoleft($vendor:null) {
+	from { 
+		@include transform(rotateZ(0deg),$vendor);
+	}
+	to {
+		@include transform(rotateZ(-90deg),$vendor);
+	}
+}
+
+.rollleft.out, .rollleft.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.rollleft.out {
+	@include transform(rotateZ(-90deg));
+	@include animation-name(rollouttoleft);
+}
+.rollleft.in {
+	@include transform(rotateZ(0deg));
+	@include animation-name(rollinfromright);
+}
+.rollleft.out.reverse {
+	@include transform(rotateZ(90deg));
+	@include animation-name(rollouttoright);
+}
+.rollleft.in.reverse {
+	@include transform(rotateZ(0deg));
+	@include animation-name(rollinfromleft);
+}
+
+.rollright.out, .rollright.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.rollright.out {
+	@include transform(rotateZ(90deg));
+	@include animation-name(rollouttoright);
+}
+.rollright.in {
+	@include transform(rotateZ(0deg));
+	@include animation-name(rollinfromleft);
+}
+.rollright.out.reverse {
+	@include transform(rotateZ(-90deg));
+	@include animation-name(rollouttoleft);
+}
+.rollright.in.reverse {
+	@include transform(rotateZ(0deg));
+	@include animation-name(rollinfromright);
+}
+
+
+@if $use_webkit {
+	@-webkit-keyframes rollinfromleft {
+		@include rollinfromleft(webkit);
+	}
+	@-webkit-keyframes rollinfromright {
+		@include rollinfromright(webkit);
+	}
+	@-webkit-keyframes rollouttoright {
+		@include rollouttoright(webkit);
+	}
+	@-webkit-keyframes rollouttoleft {
+		@include rollouttoleft(webkit);
+	}
+}
+@if $use_moz {
+	@-moz-keyframes rollinfromleft {
+		@include rollinfromleft(moz);
+	}
+	@-moz-keyframes rollinfromright {
+		@include rollinfromright(moz);
+	}
+	@-moz-keyframes rollouttoright {
+		@include rollouttoright(moz);
+	}
+	@-moz-keyframes rollouttoleft {
+		@include rollouttoleft(moz);
+	}
+}
+@if $use_ms {
+	@-ms-keyframes rollinfromleft {
+		@include rollinfromleft(ms);
+	}
+	@-ms-keyframes rollinfromright {
+		@include rollinfromright(ms);
+	}
+	@-ms-keyframes rollouttoright {
+		@include rollouttoright(ms);
+	}
+	@-ms-keyframes rollouttoleft {
+		@include rollouttoleft(ms);
+	}
+}
+@if $use_o {
+	@-o-keyframes rollinfromleft {
+		@include rollinfromleft(o);
+	}
+	@-o-keyframes rollinfromright {
+		@include rollinfromright(o);
+	}
+	@-o-keyframes rollouttoright {
+		@include rollouttoright(o);
+	}
+	@-o-keyframes rollouttoleft {
+		@include rollouttoleft(o);
+	}
+}
+
+@keyframes rollinfromleft {
+	@include rollinfromleft(none);
+}
+@keyframes rollinfromright {
+	@include rollinfromright(none);
+}
+@keyframes rollouttoright {
+	@include rollouttoright(none);
+}
+@keyframes rollouttoleft {
+	@include rollouttoleft(none);
+}

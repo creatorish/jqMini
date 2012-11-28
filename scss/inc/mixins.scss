@@ -1,0 +1,215 @@
+@mixin box-sizing($box: content-box) {
+	@if $use_webkit {
+		-webkit-box-sizing: $box;
+	}
+	@if $use_moz {
+		-moz-box-sizing: $box;
+	}
+	@if $use_ms {
+		-ms-box-sizing: $box;
+	}
+	@if $use_o {
+		-o-box-sizing: $box;
+	}
+	box-sizing: $box;
+}
+
+@mixin animation-timing-function($easing: ease-out) {
+	@if $use_webkit {
+		-webkit-animation-timing-function: $easing;
+	}
+	@if $use_moz {
+		-moz-animation-timing-function: $easing;
+	}
+	@if $use_ms {
+		-ms-animation-timing-function: $easing;
+	}
+	@if $use_o {
+		-o-animation-timing-function: $easing;
+	}
+	animation-timing-function: $easing;
+}
+
+@mixin animation-duration($duration: 350ms) {
+	@if $use_webkit {
+		-webkit-animation-duration: $duration;
+	}
+	@if $use_moz {
+		-moz-animation-duration: $duration;
+	}
+	@if $use_ms {
+		-ms-animation-duration: $duration;
+	}
+	@if $use_o {
+		-o-animation-duration: $duration;
+	}
+	animation-duration: $duration;
+}
+@mixin animation-name($name) {
+	@if $use_webkit {
+		-webkit-animation-name: $name;
+	}
+	@if $use_moz {
+		-moz-animation-name: $name;
+	}
+	@if $use_ms {
+		-ms-animation-name: $name;
+	}
+	@if $use_o {
+		-o-animation-name: $name;
+	}
+	animation-name: $name;
+}
+@mixin keyframes($name) {
+	@if $use_webkit {
+		@-webkit-keyframes #{$name} {
+			@content;
+		}
+	}
+	@if $use_moz {
+		@-moz-keyframes #{$name} {
+			@content;
+		}
+	}
+	@if $use_ms {
+		@-ms-keyframes #{$name} {
+			@content;
+		}
+	}
+	@if $use_o {
+		@-o-keyframes #{$name} {
+			@content;
+		}
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+@mixin transform($arguments,$vendor:null) {
+	@if $vendor {
+		@if $vendor == "webkit" {
+			-webkit-transform: $arguments;
+		}
+		@if $vendor == "moz" {
+			-moz-transform: $arguments;
+		}
+		@if $vendor == "ms" {
+			-ms-transform: $arguments;
+		}
+		@if $vendor == "o" {
+			-o-transform: $arguments;
+		}
+	} @else {
+		@if $use_webkit {
+			-webkit-transform: $arguments;
+		}
+		@if $use_moz {
+			-moz-transform: $arguments;
+		}
+		@if $use_ms {
+			-ms-transform: $arguments;
+		}
+		@if $use_o {
+			-o-transform: $arguments;
+		}
+	}
+	transform: $arguments;
+}
+
+@mixin opacity($opacity:1,$vendor:null) {
+	@if $vendor {
+		@if $vendor == "webkit" {
+			-webkit-opacity: $opacity;
+		}
+		@if $vendor == "moz" {
+			-moz-opacity: $opacity;
+		}
+		@if $vendor == "ms" {
+			-ms-filter: alpha(opacity=#{$opacity*100});
+			filter: alpha(opacity=#{$opacity*100});
+		}
+		@if $vendor == "o" {
+			-o-opacity: $opacity;
+		}
+	} @else {
+		@if $use_webkit {
+			-webkit-opacity: $opacity;
+		}
+		@if $use_moz {
+			-moz-opacity: $opacity;
+		}
+		@if $use_ms {
+			-ms-filter: alpha(opacity=#{$opacity*100});
+			filter: alpha(opacity=#{$opacity*100});
+		}
+		@if $use_o {
+			-o-opacity: $opacity;
+		}
+	}
+	opacity: $opacity;
+}
+
+@mixin transform-origin($arguments) {
+	@if $use_webkit {
+		-webkit-transform-origin: $arguments;
+	}
+	@if $use_moz {
+		-moz-transform-origin: $arguments;
+	}
+	@if $use_ms {
+		-ms-transform-origin: $arguments;
+	}
+	@if $use_o {
+		-o-transform-origin: $arguments;
+	}
+	transform-origin: $arguments;
+}
+
+@mixin perspective($arguments) {
+	@if $use_webkit {
+		-webkit-perspective: $arguments;
+	}
+	@if $use_moz {
+		-moz-perspective: $arguments;
+	}
+	@if $use_ms {
+		-ms-perspective: $arguments;
+	}
+	@if $use_o {
+		-o-perspective: $arguments;
+	}
+	perspective: $arguments;
+}
+
+
+@mixin backface-visibility($arguments) {
+	@if $use_webkit {
+		-webkit-backface-visibility: $arguments;
+	}
+	@if $use_moz {
+		-moz-backface-visibility: $arguments;
+	}
+	@if $use_ms {
+		-ms-backface-visibility: $arguments;
+	}
+	@if $use_o {
+		-o-backface-visibility: $arguments;
+	}
+	backface-visibility: $arguments;
+}
+
+@mixin box-shadow($arguments) {
+	@if $use_webkit {
+		-webkit-box-shadow: $arguments;
+	}
+	@if $use_moz {
+		-moz-box-shadow: $arguments;
+	}
+	@if $use_ms {
+		-ms-box-shadow: $arguments;
+	}
+	@if $use_o {
+		-o-box-shadow: $arguments;
+	}
+	box-shadow: $arguments;
+}

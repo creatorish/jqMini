@@ -1,0 +1,88 @@
+/**
+ * shuffle
+ * required: slide.cscc
+ **/
+
+.shuffleright.out, .shuffleright.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.shuffleright.out {
+	@include transform(translateX(-100%));
+	@include animation-name(slideouttoright);
+}
+.shuffleright.in {
+	@include transform(translateX(0));
+	@include animation-name(slideinfromright);
+}
+.shuffleright.out.reverse {
+	@include transform(translateX(100%));
+	@include animation-name(slideouttoright);
+}
+.shuffleright.in.reverse {
+	@include transform(translateX(0));
+	@include animation-name(slideinfromright);
+}
+
+.shuffleleft.out, .shuffleleft.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.shuffleleft.out {
+	@include transform(translateX(-100%));
+	@include animation-name(slideouttoleft);
+}
+.shuffleleft.in {
+	@include transform(translateX(0));
+	@include animation-name(slideinfromleft);
+}
+.shuffleleft.out.reverse {
+	@include transform(translateX(100%));
+	@include animation-name(slideouttoleft);
+}
+.shuffleleft.in.reverse {
+	@include transform(translateX(0));
+	@include animation-name(slideinfromleft);
+}
+
+.shuffleup.out, .shuffleup.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.shuffleup.out {
+	@include transform(translateY(-100%));
+	@include animation-name(slideouttotop);
+}
+.shuffleup.in {
+	@include transform(translateY(0));
+	@include animation-name(slideinfromtop);
+}
+.shuffleup.out.reverse {
+	@include transform(translateY(100%));
+	@include animation-name(slideouttotop);
+}
+.shuffleup.in.reverse {
+	@include transform(translateY(0));
+	@include animation-name(slideinfromtop);
+}
+
+.shuffledown.out, .shuffledown.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.shuffledown.out {
+	@include transform(translateY(-100%));
+	@include animation-name(slideouttobottom);
+}
+.shuffledown.in {
+	@include transform(translateY(0));
+	@include animation-name(slideinfrombottom);
+}
+.shuffledown.out.reverse {
+	@include transform(translateY(100%));
+	@include animation-name(slideouttobottom);
+}
+.shuffledown.in.reverse {
+	@include transform(translateY(0));
+	@include animation-name(slideinfrombottom);
+}

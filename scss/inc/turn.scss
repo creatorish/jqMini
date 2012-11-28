@@ -1,0 +1,144 @@
+/**
+ * turn
+ **/
+
+/* The properties in this rule are only necessary for the 'flip' transition.
+ * We need specify the perspective to create a projection matrix. This will add
+ * some depth as the element flips. The depth number represents the distance of
+ * the viewer from the z-plane. According to the CSS3 spec, 1000 is a moderate
+ * value.
+ */
+ 
+
+@mixin flipouttoleft($vendor:null) {
+	from { 
+		@include transform(rotateY(0),$vendor);
+	}
+	to {
+		@include transform(rotateY(-90deg) scale(.9),$vendor);
+	}
+}
+
+@mixin flipouttoright($vendor:null) {
+	from { 
+		@include transform(rotateY(0),$vendor);
+	}
+	to {
+		@include transform(rotateY(90deg) scale(.9),$vendor);
+	}
+}
+
+@mixin flipintoleft($vendor:null) {
+	from { 
+		@include transform(rotateY(-90deg) scale(.9),$vendor);
+	}
+	to {
+		@include transform(rotateY(0),$vendor);
+	}
+}
+
+@mixin flipintoright($vendor:null) {
+	from { 
+		@include transform(rotateY(90deg) scale(.9),$vendor);
+	}
+	to {
+		@include transform(rotateY(0),$vendor);
+	}
+}
+
+.viewport-turn {
+	@include perspective(1000);
+	position: absolute;
+}
+.turnleft,.turnright {
+	@include backface-visibility(hidden);
+	@include transform(translateX(0));
+	/* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when visibility:hidden is used. */
+	@include transform-origin(0);
+	@include animation-duration(250ms);
+}
+.turnleft.out,.turnright.out.reverse {
+	@include transform(rotateY(-90deg) scale(.9));
+	@include animation-name(flipouttoleft);
+}
+.turnleft.in,.turnright.in.reverse {
+	@include animation-name(flipintoright);
+}
+.turnleft.out.reverse,.turnright.out {
+	@include transform(rotateY(90deg) scale(.9));
+	@include animation-name(flipouttoright);
+}
+.turnleft.in.reverse,.turnright.in {
+	@include animation-name(flipintoleft);
+}
+
+
+@if $use_webkit {
+	@-webkit-keyframes flipouttoleft {
+		@include flipouttoleft(webkit);
+	}
+	@-webkit-keyframes flipouttoright {
+		@include flipouttoright(webkit);
+	}
+	@-webkit-keyframes flipintoleft {
+		@include flipintoleft(webkit);
+	}
+	@-webkit-keyframes flipintoright {
+		@include flipintoright(webkit);
+	}
+}
+@if $use_moz {
+	@-moz-keyframes flipouttoleft {
+		@include flipouttoleft(moz);
+	}
+	@-moz-keyframes flipouttoright {
+		@include flipouttoright(moz);
+	}
+	@-moz-keyframes flipintoleft {
+		@include flipintoleft(moz);
+	}
+	@-moz-keyframes flipintoright {
+		@include flipintoright(moz);
+	}
+}
+@if $use_ms {
+	@-ms-keyframes flipouttoleft {
+		@include flipouttoleft(ms);
+	}
+	@-ms-keyframes flipouttoright {
+		@include flipouttoright(ms);
+	}
+	@-ms-keyframes flipintoleft {
+		@include flipintoleft(ms);
+	}
+	@-ms-keyframes flipintoright {
+		@include flipintoright(ms);
+	}
+}
+@if $use_o {
+	@-o-keyframes flipouttoleft {
+		@include flipouttoleft(o);
+	}
+	@-o-keyframes flipouttoright {
+		@include flipouttoright(o);
+	}
+	@-o-keyframes flipintoleft {
+		@include flipintoleft(o);
+	}
+	@-o-keyframes flipintoright {
+		@include flipintoright(o);
+	}
+}
+
+@keyframes flipouttoleft {
+	@include flipouttoleft(none);
+}
+@keyframes flipouttoright {
+	@include flipouttoright(none);
+}
+@keyframes flipintoleft {
+	@include flipintoleft(none);
+}
+@keyframes flipintoright {
+	@include flipintoright(none);
+}

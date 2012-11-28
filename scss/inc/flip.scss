@@ -1,0 +1,253 @@
+/**
+ * flip
+ **/
+
+/* The properties in this rule are only necessary for the 'flip' transition.
+ * We need specify the perspective to create a projection matrix. This will add
+ * some depth as the element flips. The depth number represents the distance of
+ * the viewer from the z-plane. According to the CSS3 spec, 1000 is a moderate
+ * value.
+ */
+
+@mixin flipouttoleft($vendor:null) {
+	from { 
+		@include transform(rotateY(0),$vendor);
+	}
+	to {
+		@include transform(rotateY(-90deg) scale(.9),$vendor);
+	}
+}
+@mixin flipouttoright($vendor:null) {
+	from { 
+		@include transform(rotateY(0),$vendor);
+	}
+	to {
+		@include transform(rotateY(90deg) scale(.9),$vendor);
+	}
+}
+@mixin flipintoleft($vendor:null) {
+	from { 
+		@include transform(rotateY(-90deg) scale(.9),$vendor);
+	}
+	to {
+		@include transform(rotateY(0),$vendor);
+	}
+}
+@mixin flipintoright($vendor:null) {
+	from { 
+		@include transform(rotateY(90deg) scale(.9),$vendor);
+	}
+	to {
+		@include transform(rotateY(0),$vendor);
+	}
+}
+@mixin flipouttotop($vendor:null) {
+	from { 
+		@include transform(rotateX(0),$vendor);
+	}
+	to {
+		@include transform(rotateX(-90deg) scale(.9),$vendor);
+	}
+}
+@mixin flipouttobottom($vendor:null) {
+	from { 
+		@include transform(rotateX(0),$vendor);
+	}
+	to {
+		@include transform(rotateX(90deg) scale(.9),$vendor);
+	}
+}
+@mixin flipintobottom($vendor:null) {
+	from { 
+		@include transform(rotateX(-90deg) scale(.9),$vendor);
+	}
+	to {
+		@include transform(rotateX(0),$vendor);
+	}
+}
+@mixin flipintotop($vendor:null) {
+	from { 
+		@include transform(rotateX(90deg) scale(.9),$vendor);
+	}
+	to {
+		@include transform(rotateX(0),$vendor);
+	}
+}
+
+.viewport-flip {
+	@include perspective(1000);
+	position: absolute;
+}
+.flipleft,.flipright {
+	@include animation-duration(225ms);
+	@include backface-visibility(hidden);
+	@include transform(translateX(0));
+	/* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when visibility:hidden is used. */
+}
+.flipleft.out,.flipright.out.reverse {
+	@include transform(rotateY(-90deg) scale(.9));
+	@include animation-name(flipouttoleft);
+}
+.flipleft.in,.flipright.in.reverse {
+	@include animation-name(flipintoright);
+}
+.flipleft.out.reverse,.flipright.out {
+	@include transform(rotateY(90deg) scale(.9));
+	@include animation-name(flipouttoright);
+}
+.flipleft.in.reverse,.flipright.in {
+	@include animation-name(flipintoleft);
+}
+
+.flipup,.flipdown {
+	@include backface-visibility(hidden);
+	@include animation-duration(225ms);
+}
+.flipup.out,.flipdown.out.reverse {
+	@include transform(rotateX(-90deg) scale(.9));
+	@include animation-name(flipouttotop);
+}
+.flipup.in,.flipdown.in.reverse {
+	@include animation-name(flipintotop);
+}
+.flipup.out.reverse,.flipdown.out {
+	@include transform(rotateX(90deg) scale(.9));
+	@include animation-name(flipouttobottom);
+}
+.flipup.in.reverse,.flipdown.in {
+	@include animation-name(flipintobottom);
+}
+
+
+@if $use_webkit {
+	@-webkit-keyframes flipouttoleft {
+		@include flipouttoleft(webkit);
+	}
+	@-webkit-keyframes flipouttoright {
+		@include flipouttoright(webkit);
+	}
+	@-webkit-keyframes flipintoleft {
+		@include flipintoleft(webkit);
+	}
+	@-webkit-keyframes flipintoright {
+		@include flipintoright(webkit);
+	}
+	@-webkit-keyframes flipouttotop {
+		@include flipouttotop(webkit);
+	}
+	@-webkit-keyframes flipouttobottom {
+		@include flipouttobottom(webkit);
+	}
+	@-webkit-keyframes flipintobottom {
+		@include flipintobottom(webkit);
+	}
+	@-webkit-keyframes flipintotop {
+		@include flipintotop(webkit);
+	}
+}
+
+@if $use_moz {
+	@-moz-keyframes flipouttoleft {
+		@include flipouttoleft(moz);
+	}
+	@-moz-keyframes flipouttoright {
+		@include flipouttoright(moz);
+	}
+	@-moz-keyframes flipintoleft {
+		@include flipintoleft(moz);
+	}
+	@-moz-keyframes flipintoright {
+		@include flipintoright(moz);
+	}
+	@-moz-keyframes flipouttotop {
+		@include flipouttotop(moz);
+	}
+	@-moz-keyframes flipouttobottom {
+		@include flipouttobottom(moz);
+	}
+	@-moz-keyframes flipintobottom {
+		@include flipintobottom(moz);
+	}
+	@-moz-keyframes flipintotop {
+		@include flipintotop(moz);
+	}
+}
+
+@if $use_ms {
+	@-ms-keyframes flipouttoleft {
+		@include flipouttoleft(ms);
+	}
+	@-ms-keyframes flipouttoright {
+		@include flipouttoright(ms);
+	}
+	@-ms-keyframes flipintoleft {
+		@include flipintoleft(ms);
+	}
+	@-ms-keyframes flipintoright {
+		@include flipintoright(ms);
+	}
+	@-ms-keyframes flipouttotop {
+		@include flipouttotop(ms);
+	}
+	@-ms-keyframes flipouttobottom {
+		@include flipouttobottom(ms);
+	}
+	@-ms-keyframes flipintobottom {
+		@include flipintobottom(ms);
+	}
+	@-ms-keyframes flipintotop {
+		@include flipintotop(ms);
+	}
+}
+
+@if $use_o {
+	@-o-keyframes flipouttoleft {
+		@include flipouttoleft(o);
+	}
+	@-o-keyframes flipouttoright {
+		@include flipouttoright(o);
+	}
+	@-o-keyframes flipintoleft {
+		@include flipintoleft(o);
+	}
+	@-o-keyframes flipintoright {
+		@include flipintoright(o);
+	}
+	@-o-keyframes flipouttotop {
+		@include flipouttotop(o);
+	}
+	@-o-keyframes flipouttobottom {
+		@include flipouttobottom(o);
+	}
+	@-o-keyframes flipintobottom {
+		@include flipintobottom(o);
+	}
+	@-o-keyframes flipintotop {
+		@include flipintotop(o);
+	}
+}
+
+@keyframes flipouttoleft {
+	@include flipouttoleft(none);
+}
+@keyframes flipouttoright {
+	@include flipouttoright(none);
+}
+@keyframes flipintoleft {
+	@include flipintoleft(none);
+}
+@keyframes flipintoright {
+	@include flipintoright(none);
+}
+@keyframes flipouttotop {
+	@include flipouttotop(none);
+}
+@keyframes flipouttobottom {
+	@include flipouttobottom(none);
+}
+@keyframes flipintobottom {
+	@include flipintobottom(none);
+}
+@keyframes flipintotop {
+	@include flipintotop(none);
+}

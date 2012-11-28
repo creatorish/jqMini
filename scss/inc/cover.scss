@@ -1,0 +1,89 @@
+/**
+ * cover
+ * required: slide.scss,wait.scss
+ **/
+
+
+.coverleft.out, .coverleft.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350m);
+}
+.coverleft.out {
+	@include transform(translateX(0));
+	@include animation-name(wait);
+}
+.coverleft.in {
+	@include transform(translateX(100%));
+	@include animation-name(slideinfromright);
+}
+.coverleft.out.reverse {
+	@include transform(translateX(100%));
+	@include animation-name(slideouttoright);
+}
+.coverleft.in.reverse {
+	@include transform(translateX(0));
+	@include animation-name(wait);
+}
+
+.coverright.out, .coverright.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.coverright.out {
+	@include transform(translateX(-100%));
+	@include animation-name(wait);
+}
+.coverright.in {
+	@include transform(translateX(0));
+	@include animation-name(slideinfromleft);
+}
+.coverright.out.reverse {
+	@include transform(translateX(100%));
+	@include animation-name(slideouttoleft);
+}
+.coverright.in.reverse {
+	@include transform(translateX(0));
+	@include animation-name(wait);
+}
+
+.coverup.out,.coverup.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.coverup.out {
+	@include transform(translateY(0));
+	@include animation-name(wait);
+}
+.coverup.in {
+	@include transform(translateY(0));
+	@include animation-name(slideinfromtop);
+}
+.coverup.out.reverse {
+	@include transform(translateY(100%));
+	@include animation-name(slideouttotop);
+}
+.coverup.in.reverse {
+	@include transform(translateY(0));
+	@include animation-name(wait);
+}
+
+.coverdown.out,.coverdown.in {
+	@include animation-timing-function(ease-out);
+	@include animation-duration(350ms);
+}
+.coverdown.out {
+	@include transform(translateY(0));
+	@include animation-name(wait);
+}
+.coverdown.in {
+	@include transform(translateY(0));
+	@include animation-name(slideinfrombottom);
+}
+.coverdown.out.reverse {
+	@include transform(translateY(100%));
+	@include animation-name(slideouttobottom);
+}
+.coverdown.in.reverse {
+	@include transform(translateY(0));
+	@include animation-name(wait);
+}

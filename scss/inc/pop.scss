@@ -1,0 +1,98 @@
+/**
+ * popup/popout
+ **/
+
+@mixin popin($vendor:null) {
+	from {
+		@include transform(scale(.8),$vendor);
+		@include opacity(0,$vendor);
+	}
+	to {
+		@include transform(scale(1),$vendor);
+		@include opacity(1,$vendor);
+	}
+}
+@mixin popout($vendor:null) {
+	from {
+		@include transform(scale(1),$vendor);
+		@include opacity(1,$vendor);
+	}
+	to {
+		@include transform(scale(.8),$vendor);
+		@include opacity(0,$vendor);
+	}
+}
+
+.popup,.popdown {
+	@include transform-origin(50% 50%);
+}
+.popup.in,.popdown.in.reverse {
+	@include transform(scale(1));
+    @include opacity(1);
+	@include animation-name(popin);
+	@include animation-duration(350ms);
+}
+.popup.out,.popdown.out.reverse {
+	@include animation-name(wait);
+	@include animation-duration(350ms);
+}
+.popup.in.reverse {
+	@include transform(scale(1));
+	@include animation-name(wait);
+}
+.popdown.in {
+	z-index: 1;
+	@include opacity(1);
+	@include transform(scale(1));
+	@include animation-name(wait);
+}
+.popdown.out {
+	z-index: 2;
+	@include transform(scale(.8));
+	@include opacity(0);
+	@include animation-name(popout);
+}
+.popup.out.reverse {
+	@include transform(scale(.8));
+	@include opacity(0);
+	@include animation-name(popout);
+}
+
+@if $use_webkit {
+	@-webkit-keyframes popin {
+		@include popin(webkit);
+	}
+	@-webkit-keyframes popout {
+		@include popout(webkit);
+	}
+}
+@if $use_moz {
+	@-moz-keyframes popin {
+		@include popin(moz);
+	}
+	@-moz-keyframes popout {
+		@include popout(moz);
+	}
+}
+@if $use_ms {
+	@-ms-keyframes popin {
+		@include popin(ms);
+	}
+	@-ms-keyframes popout {
+		@include popout(ms);
+	}
+}
+@if $use_o {
+	@-o-keyframes popin {
+		@include popin(o);
+	}
+	@-o-keyframes popout {
+		@include popout(o);
+	}
+}
+@keyframes popin {
+	@include popin(none);
+}
+@keyframes popout {
+	@include popout(none);
+}

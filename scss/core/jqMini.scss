@@ -1,0 +1,26 @@
+/*****************************************************************
+ *
+ * jqMini.css
+ *
+*******************************************************************/
+
+$use_webkit: true;
+$use_moz: true;
+$use_o: true;
+$use_ms: true;
+
+@import "../inc/mixins";
+@import "../inc/base";
+
+@import "../inc/wait";
+@import "../inc/fade";
+@import "../inc/pop";
+@import "../inc/slide";
+@import "../inc/flip";
+@import "../inc/turn";
+@import "../inc/flow";
+@import "../inc/cover";
+@import "../inc/shuffle";
+@import "../inc/shrink";
+@import "../inc/roll";
+
