@@ -193,6 +193,15 @@ jqMiniオブジェクトには関数があります。
 
 前のシーンに遷移することができます。前のシーンがない場合は無視されます。
 
+CSSジェネレーター
+--------
+画面遷移のアニメーションを選んで出力できます。
+
+http://dev.creatorish.com/jqmini/#generator
+
+SCSSやLessを知らなくても、使用するアニメーションだけのCSSを作ることができ、
+よりモバイル端末に優しい仕様になっています。
+
 ライセンス
 --------
 [MIT]: http://www.opensource.org/licenses/mit-license.php
