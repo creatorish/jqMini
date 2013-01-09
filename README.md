@@ -1,8 +1,8 @@
 jqMini.js
 ======================
-スマートフォン向け画面遷移フレームワーク。  
-シンプルに画面遷移の機能だけを実装することができます。  
-jQueryMobileの画面遷移機能だけ使いたいなぁという人のためのフレームワークです。
+スマートフォン向け画面遷移フレームワーク。
+シンプルに画面遷移の機能だけを実装することができます。
+jQueryだけでなくZepto.jsでも動作可能です
 
 公式サイト
 ------
@@ -10,22 +10,44 @@ http://dev.creatorish.com/jqmini/
 
 デモ
 ------
-http://dev.creatorish.com/demo/jqmini1.2/
+http://dev.creatorish.com/demo/jqmini1.3/
+
+ライブラリ
+------
++    jQuery(1.7以上) http://jquery.com/
++    Zepto.js(1.0rc1以上) http://zeptojs.com/　[jqMini1.3以上]
+
+詳しい使い方は「使い方」の項のJavaScriptを参照ください。
+
+### サイズ比較（概算） ###
+
++    jQuery(1.8.3) + jqMIni(8KB) = 100KB
++    Zepto(1.0rc1) + jqMini(8KB) = 32KB
+
+サイズだけでなく必要に応じた機能のライブラリを使用することをオススメします。
 
 使い方
 ------
 
 ### HTMLマークアップ ###
 
+※version1.3から<div class="page-inner">が必要になっています。
+
     <div id="jqmini" class="jqMini">
         <div id="main" class="current page">
-            <!--初期ページの内容-->
+            <div class="page-inner">
+                <!--初期ページの内容-->
+            </div>
         </div>
         <div id="page2" class="page">
-            <!--ページ2の内容-->
+            <div class="page-inner">
+                <!--ページ2の内容-->
+            </div>
         </div>
         <div id="page3" class="page">
-            <!--ページ3の内容-->
+            <div class="page-inner">
+                <!--ページ3の内容-->
+            </div>
         </div>
     </div>
 
@@ -37,11 +59,30 @@ currentクラスを付けたシーンが初期シーンになります
 
 ### JavaScript ###
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+#### jQueryの場合 ####
+
+    <script src="jquery.js"></script>
     <script src="jqMini.js"></script>
     <script>
         $("#jqmini").jqMini();
     </script>
+
+#### Zepto.jsの場合 ####
+
+    <script src="zepto.js"></script>
+    <script src="jqMini.zepto.js"></script>
+    <script src="jqMini.js"></script>
+    <script>
+        $("#jqmini").jqMini();
+    </script>
+
+#### スタンドアローンの場合 ####
+
+    <script src="jqMini.standalone.js"></script>
+    <script>
+        $("#jqmini").jqMini();
+    </script>
+
 
 ### ページ遷移リンク ###
 
@@ -56,8 +97,8 @@ hrefに遷移先のIDを、data-transitionにアニメーション名を記述�
     <div id="page2" class="page">
         <a href="#main" data-transition="slideleft" data-reverse="true">戻る</a>
     </div>
-    
-data-reverse=”true”を追加するだけで、アニメーションが逆向きになります。  
+
+data-reverse=”true”を追加するだけで、アニメーションが逆向きになります。
 またscrollCheckがtrueのときはスクロール位置を復元します。
 
 ### 内部リンク ###
@@ -65,7 +106,7 @@ data-reverse=”true”を追加するだけで、アニメーションが逆向
     <div id="page2" class="page">
         <a href="#scene2" data-inline"true">Scene2</a>
     </div>
-    
+
 data-inline=”true”を追加するとページ遷移はせず、同じページ内でスムーススクロールで遷移します。
 
 ### 外部リンク ###
@@ -122,6 +163,7 @@ rel=”external”をつけると外部リンクになります。（externalは
 
     $("#jqmini").jqMini({
         transition: "fade",
+        fadeTime: 200,
         scrollCheck: true,
         scrollTime: 150,
         scrollEasing: "swing"
@@ -130,6 +172,7 @@ rel=”external”をつけると外部リンクになります。（externalは
     });
 
 +    transition: "fade" : data-transitionが記述されていないときの 初期アニメーション名です。
++    fadeTime: 200 : スクロール復元時のフェードイン時間（ミリ秒）
 +    scrollCheck: true : シーン切り替え時にスクロール位置を保存するかどうかです。data-reverse="true"のときにスクロール位置を復元します。
 +    scrollTime: 150 : スクロール復元時のアニメーション時間（ミリ秒）
 +    scrollEasing: "swing" : スクロール復元時のイージング
@@ -161,7 +204,7 @@ jqMini.jsでは画面遷移時にイベントを実行させることができ�
 +    jqMiniEvent.preshow: from(遷移前の要素) : 指定シーンが表示になる前に発生します。
 +    jqMiniEvent.prehide: to(遷移後の要素) : 指定シーンが非表示になる前に発生します。
 
-画面遷移イベント時に遷移をキャンセルすることができます。  
+画面遷移イベント時に遷移をキャンセルすることができます。
 changePage,preShow,preHideのいずれかの場合でreturn false;することでキャンセルすることができます。
 
 グローバル関数
@@ -199,8 +242,8 @@ CSSジェネレーター
 
 http://dev.creatorish.com/jqmini/#generator
 
-SCSSやLessを知らなくても、使用するアニメーションだけのCSSを作ることができ、
-よりモバイル端末に優しい仕様になっています。
+SCSSやLessを知らなくても、使用するアニメーションだけのCSSを生成でき、
+ベンダープレフィックスの選択もできるので、よりモバイル端末に優しい仕様を作ることができます。
 
 ライセンス
 --------
@@ -210,7 +253,7 @@ Distributed under the [MIT License][mit].
 
 作者
 --------
-creatorish yuu  
-Weblog: <http://creatorish.com>  
-Facebook: <http://facebook.com/creatorish>  
+creatorish yuu
+Weblog: <http://creatorish.com>
+Facebook: <http://facebook.com/creatorish>
 Twitter: <http://twitter.jp/creatorish>

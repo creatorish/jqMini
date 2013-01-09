@@ -43,6 +43,7 @@ html,body,.jqMini {
 	width: 100%;
 	@include animation-timing-function(ease-out);
 	@include animation-duration(350ms);
+	@include animation-iteration-count(1);
 	display: block;
 	z-index: 1;
 }
@@ -52,6 +53,7 @@ html,body,.jqMini {
 	width: 100%;
 	@include animation-timing-function(ease-in);
 	@include animation-duration(225ms);
+	@include animation-iteration-count(1);
 	display: block;
 	z-index: 1;
 }

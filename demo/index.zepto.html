@@ -55,7 +55,7 @@
 </head>
 <body>
 	<div id="jqmini" class="jqMini">
-		<div id="main" class="page current">
+		<div id="main" class="page">
 			<div class="page-inner">
 				<h1>jQuery Mobile Mini</h1>
 				<ol>
@@ -400,7 +400,8 @@
 			</div>
 		</div>
 	</div>
-<script src="lib/jquery.js"></script>
+<script src="lib/zepto.js"></script>
+<script src="../jqMini.zepto.js"></script>
 <script src="../jqMini.js"></script>
 <script>
 	$("#jqmini").jqMini({
@@ -409,7 +410,6 @@
 		external: "external",
 		hash: true
 	});
-
 	$("#show").bind(jqMiniEvent.show,function() {
 		alert("Show Event");
 	});
@@ -422,9 +422,9 @@
 	$("#prehide").bind(jqMiniEvent.preHide,function() {
 		alert("PreHide Event");
 	});
-	$("#cancel").one(jqMiniEvent.preShow,function() {
+	$("#cancel").one(jqMiniEvent.preShow,function(e) {
 		alert("画面遷移をキャンセルしました。\nもう一度クリックすると説明が見られます。");
-		return false;
+		e.preventDefault();
 	});
 	$("#tips").one(jqMiniEvent.show,function() {
 		alert("このアラートは一度だけ表示されます");
