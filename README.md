@@ -22,7 +22,7 @@ http://dev.creatorish.com/demo/jqmini1.3/
 ### サイズ比較（概算） ###
 
 +    jQuery(1.8.3) + jqMIni(8KB) = 100KB
-+    Zepto(1.0rc1) + jqMini(8KB) = 32KB
++    Zepto(1.0rc1) + jqMini(8KB) + jqMini.zepto(1.2KB) = 33.2KB
 
 サイズだけでなく必要に応じた機能のライブラリを使用することをオススメします。
 
