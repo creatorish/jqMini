@@ -60,6 +60,7 @@
 				<h1>jQuery Mobile Mini</h1>
 				<ol>
 					<li><a href="#transition" data-transition="slideleft">アニメーション</a></li>
+					<li><a href="#transition" data-transition="slideleft" data-scrollTarget="">アニメーション</a></li>
 					<li><a href="#event" data-transition="slideleft">イベント</a></li>
 					<li><a href="#ajax" data-transition="slideleft">Ajaxサンプル</a></li>
 					<li><a href="app/index.html" target="_blank" rel="external">App風サンプル</a></li>
@@ -116,6 +117,7 @@
 
 					<li><a href="#rollleft" data-transition="rollleft">rollleft</a></li>
 					<li><a href="#rollright" data-transition="rollright">rollright</a></li>
+					<a id="foot"></a>
 				</ol>
 				<div class="back"><a href="#main" data-transition="slideleft" data-reverse="true">Back</a></div>
 			</div>
@@ -403,7 +405,7 @@
 <script src="lib/jquery.js"></script>
 <script src="../jqMini.js"></script>
 <script>
-	$("#jqmini").jqMini({
+	var jqmini = $("#jqmini").jqMini({
 		transition: "fade",
 		scrollCheck: true,
 		external: "external",

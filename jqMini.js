@@ -6,8 +6,8 @@
  * Required: jQuery(http://jquery.com/)
  * Inspired: jQuery Mobile(http://jquerymobile.com/)
  * License: MIT
- * Update: 2012/01/09
- * Version: 1.3
+ * Update: 2012/01/12
+ * Version: 1.3.1
  * Author: yuu.creatorish
  * URL: http://creatorish.com
  * PluginURL: http://dev.creatorish.com/jqmini/
@@ -288,9 +288,7 @@
 				options.transition = "none";
 			}
 
-			if (options.reverse) {
-				to.children(".page-inner").css("opacity", "0");
-			}
+			to.children(".page-inner").css("opacity", "0");
 
 			if (options.transition === "none") {
 				from.removeClass("current");
@@ -303,6 +301,8 @@
 
 				if (options.reverse && setting.scrollCheck && to.prop("scroll")) {
 					scrollTo(to.prop("scroll"),0);
+				} else if (options.scrollTarget) {
+					scrollTo($("#"+options.scrollTarget).offset().top,0);
 				} else {
 					scrollTo(1,0);
 				}
@@ -354,10 +354,11 @@
 
 			if (options.reverse && setting.scrollCheck && $(this).prop("scroll")) {
 				scrollTo($(this).prop("scroll"),0);
+			} else if (options.scrollTarget) {
+				scrollTo($("#" + options.scrollTarget).offset().top,0);
 			}
-			if (options.reverse) {
-				my.children(".page-inner").fadeTo(setting.fadeTime,1);
-			}
+
+			my.children(".page-inner").fadeTo(setting.fadeTime,1);
 
 			isAnimation = false;
 

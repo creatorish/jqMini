@@ -76,14 +76,6 @@ currentクラスを付けたシーンが初期シーンになります
         $("#jqmini").jqMini();
     </script>
 
-#### スタンドアローンの場合 ####
-
-    <script src="jqMini.standalone.js"></script>
-    <script>
-        $("#jqmini").jqMini();
-    </script>
-
-
 ### ページ遷移リンク ###
 
     <div id="main" class="current page">
@@ -100,6 +92,20 @@ hrefに遷移先のIDを、data-transitionにアニメーション名を記述�
 
 data-reverse=”true”を追加するだけで、アニメーションが逆向きになります。
 またscrollCheckがtrueのときはスクロール位置を復元します。
+
+### ページ遷移+任意の要素へのスクロール ###
+
+    <div id="page1" class="page">
+        <a href="#page2" data-transition="slideleft" data-scrollTarget="scroll-here">戻る</a>
+    </div>
+    <div id="page2" class="page">
+        <p>dummy</p>
+        <p>dummy</p>
+        <p id="scroll-here">dummy</p>
+    </div>
+
+data-scrollTarget="スクロール先のID"とすることで画面遷移後の初期スクロール位置を
+指定した要素の位置にすることができます。(1.3.1↑)
 
 ### 内部リンク ###
 
@@ -185,24 +191,24 @@ rel=”external”をつけると外部リンクになります。（externalは
 jqMini.jsでは画面遷移時にイベントを実行させることができます。
 
     //画面遷移毎に実行する場合
-    $("#jqMini").bind(jqMiniEvent.changeStartまたはjqMiniEvent.changeStart,function(from,to) {
+    $("#jqMini").bind(jqMiniEvent.changeStartまたはjqMiniEvent.changeStart,function(e,from,to) {
         //実行する内容
     });
     //指定シーンに遷移時に毎回実行する場合
-    $("#シーン名").bind(イベント名,function(fromまたはto) {
+    $("#シーン名").bind(イベント名,function(e,fromまたはto) {
         //実行する内容
     });
     //指定シーンに初めて遷移してきたときのみ実行する場合
-    $("#シーン名").one(イベント名,function(fromまたはto) {
+    $("#シーン名").one(イベント名,function(e,fromまたはto) {
         //実行する内容
     });
 
-+    jqMiniEvent.changeStart: from(遷移前の要素),to(遷移後の要素) : 画面遷移が実行される直前に発生します。
-+    jqMiniEvent.changeEnd: from(遷移前の要素),to(遷移後の要素) : 画面遷移が完了した直後に発生します。
-+    jqMiniEvent.show: from(遷移前の要素) : 指定シーンの表示が完了した直後に発生します。
-+    jqMiniEvent.hide: to(遷移後の要素) : 指定シーンが非表示になった直後に発生します。
-+    jqMiniEvent.preshow: from(遷移前の要素) : 指定シーンが表示になる前に発生します。
-+    jqMiniEvent.prehide: to(遷移後の要素) : 指定シーンが非表示になる前に発生します。
++    jqMiniEvent.changeStart: e(イベントオブジェクト),from(遷移前の要素),to(遷移後の要素) : 画面遷移が実行される直前に発生します。
++    jqMiniEvent.changeEnd: e(イベントオブジェクト),from(遷移前の要素),to(遷移後の要素) : 画面遷移が完了した直後に発生します。
++    jqMiniEvent.show: e(イベントオブジェクト),from(遷移前の要素) : 指定シーンの表示が完了した直後に発生します。
++    jqMiniEvent.hide: e(イベントオブジェクト),to(遷移後の要素) : 指定シーンが非表示になった直後に発生します。
++    jqMiniEvent.preshow: e(イベントオブジェクト),from(遷移前の要素) : 指定シーンが表示になる前に発生します。
++    jqMiniEvent.prehide: e(イベントオブジェクト),to(遷移後の要素) : 指定シーンが非表示になる前に発生します。
 
 画面遷移イベント時に遷移をキャンセルすることができます。
 changePage,preShow,preHideのいずれかの場合でreturn false;することでキャンセルすることができます。
@@ -216,11 +222,12 @@ jqMiniオブジェクトには関数があります。
 
     var jqmini = $("#jqmini").jqMini();
     jqmini.goTo("#scene01",{
-        reverse: true,
+        //reverse: true,
         transition: "slideleft"
     });
 
 指定シーンに遷移することができます。上のソースではscene01にスライドしながら遷移します。
+reverseを付けると前のシーンへ戻ります。
 
 ### next ###
 
